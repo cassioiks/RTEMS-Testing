@@ -1,0 +1,53 @@
+Fire Marshal Bill source code
+
+Copyright (c) 2003 by Matt Cross <matt@dragonflyhollow.org>
+
+This code is the code which controls Fire Marshal Bill, a robot I
+built for the 2003 Trinity College Home Fire-Fighting Robot Contest
+http://www.trincoll.edu/events/robot/ .
+
+It runs on the MRM332 board (see http://www.robominds.com).  It
+requires the 512K ram upgrade, and a 25MHz processor (which is
+standard by now).  It runs under the RTEMS operating system (see
+http://www.rtems.com).
+
+For more details on this code, please refer to 'description.txt' or to
+my web site at:
+
+http://www.dragonflyhollow.org/matt/robots/firemarshalbill/
+
+Minimal build instructions:
+
+1. Build RTEMS with support for (at least) the MRM332 BSP.
+
+2. Set the environment variable RTEMS_MAKEFILE_PATH to the path where
+   the mrm332 BSP is installed (which is /opt/rtems/m68k-rtems/mrm332
+   by default).
+
+3. Type 'make'.
+
+The output file will be o-optimize/test.exe, which can be burned into
+the flash using my 'flashtool' utility and the BDM cable.  It can also
+be downloaded into the flash using the flash support built into
+CPUBUG32 that ships with the MRM, but that will take much longer.
+
+You can also build the code to run from RAM for debugging by
+commenting out the line in the Makefile that sets MRM_IN_ROM to yes.
+The ram executable will be in o-optimise/test.nxe.  To run the ram
+executable under gdb:
+
+1. Ensure you have the BDM cable installed correctly and have built
+   the bdm driver and gdb with bdm support.
+
+2. Copy the file 'mrmgdbinit' from the flashtool into this directory.
+
+2. Type 'gdb o-optimize/test.nxe'
+
+3. At the gdb prompt, type:
+	source mrmgdbinit
+	load
+	set $pc=0x10008
+
+4. At this point, the program is loaded and ready to go.  Set any
+   breakpoints you would like, and then type 'c' (don't type 'run'!)
+   to start it.

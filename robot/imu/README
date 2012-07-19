@@ -1,0 +1,11 @@
+directory robot/imu
+
+This is test code for implementing a kalman filter that I plan to use
+to determine the current tilt angle of my robot.
+
+imu-1d.c is the code from rotomotion.com
+
+imu-1d-fixed.c is the equivalent code converted to use fixed point
+arithmetic.
+
+

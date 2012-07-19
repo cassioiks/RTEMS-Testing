@@ -1,0 +1,1813 @@
+# GNU Make version 3.77, by Richard Stallman and Roland McGrath.
+# Copyright (C) 1988, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98
+# 	Free Software Foundation, Inc.
+# This is free software; see the source for copying conditions.
+# There is NO warranty; not even for MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE.
+
+# Report bugs to <bug-make@gnu.org>.
+
+test -d o-optimize || mkdir o-optimize
+/usr/local/rtems/bin/m68k-rtems-gcc --pipe -B/usr/local/rtems//mrm/lib/ -specs bsp_specs -qrtems -g -Wall -ansi -fasm  -O4 -fomit-frame-pointer     -mcpu32     -c   -o o-optimize/test.o test.c
+/usr/local/rtems/bin/m68k-rtems-gcc --pipe -B/usr/local/rtems//mrm/lib/ -specs bsp_specs -qrtems -g -Wall -ansi -fasm  -O4 -fomit-frame-pointer     -mcpu32     -c   -o o-optimize/fqd.o fqd.c
+/usr/local/rtems/bin/m68k-rtems-gcc --pipe -B/usr/local/rtems//mrm/lib/ -specs bsp_specs -qrtems -g -Wall -ansi -fasm  -O4 -fomit-frame-pointer     -mcpu32     -c   -o o-optimize/tpu.o tpu.c
+/usr/local/rtems/bin/m68k-rtems-gcc --pipe -B/usr/local/rtems//mrm/lib/ -specs bsp_specs -qrtems -g -Wall -ansi -fasm  -O4 -fomit-frame-pointer     -mcpu32      -L /usr/local/rtems//mrm/lib    -o o-optimize/test.nxe  o-optimize/test.o o-optimize/fqd.o o-optimize/tpu.o   /usr/local/rtems//mrm/lib/no-dpmem.rel /usr/local/rtems//mrm/lib/no-event.rel /usr/local/rtems//mrm/lib/no-msg.rel /usr/local/rtems//mrm/lib/no-mp.rel /usr/local/rtems//mrm/lib/no-part.rel /usr/local/rtems//mrm/lib/no-signal.rel /usr/local/rtems//mrm/lib/no-timer.rel /usr/local/rtems//mrm/lib/no-rtmon.rel     
+/usr/local/rtems/bin/m68k-rtems-objcopy -O srec o-optimize/test.nxe o-optimize/test.i
+sed -e 's/.$//' -e '/^S0/d' o-optimize/test.i | /usr/local/rtems/bin/packhex > o-optimize/test.exe
+/usr/local/rtems/m68k-rtems/bin/nm -g -n o-optimize/test.nxe > o-optimize/test.num
+/usr/local/rtems/bin/m68k-rtems-size o-optimize/test.nxe
+   text	   data	    bss	    dec	    hex	filename
+  62288	   1712	  10736	  74736	  123f0	o-optimize/test.nxe
+
+# Make data base, printed on Sun Dec 31 21:01:00 2000
+
+# Variables
+
+# makefile
+BARE_CPU_CFLAGS = 
+# environment
+LC_ALL = en_US
+# default
+F77 = $(FC)
+# makefile
+PROJECT_INCLUDE = $(PROJECT_RELEASE)/lib/include
+# makefile
+OBJCOPY_FOR_TARGET = /usr/local/rtems/bin/m68k-rtems-objcopy
+# makefile
+VARIANT = 
+# makefile
+TARGET_VARIANTS = optimize debug profile
+# default
+PREPROCESS.r = $(FC) $(FFLAGS) $(RFLAGS) $(TARGET_ARCH) -F
+# makefile
+OBJCOPY = /usr/local/rtems/bin/m68k-rtems-objcopy
+# makefile
+RTEMS_BSP = mrm
+# makefile
+DEFS = 
+# automatic
+@F = $(notdir $@)
+# makefile
+TARGET_VA = $(TARGET_$@_V)
+# makefile
+PROJECT_ROOT = $(prefix)/
+# makefile
+PROJECT_BIN = $(PROJECT_RELEASE)/bin
+# environment
+HOME = /home/profesor
+# makefile
+CFLAGS_OPTIMIZE_V = -O4 -fomit-frame-pointer
+# environment
+USERNAME = 
+# default
+MAKE = $(MAKE_COMMAND)
+# makefile
+CXXFLAGS = $(CFLAGS_DEFAULT) $(XCXXFLAGS)
+# default
+SUFFIXES := .out .a .ln .o .c .cc .C .cpp .p .f .F .r .y .l .s .S .mod .sym .def .h .info .dvi .tex .texinfo .texi .txinfo .w .ch .web .sh .elc .el
+# makefile
+LD_FOR_TARGET = /usr/local/rtems/m68k-rtems/bin/ld
+# makefile
+START_BASE = start
+# makefile
+CPU_CFLAGS = -mcpu32
+# makefile
+PGM = ${ARCH}/$(EXEC)
+# makefile
+RECURSE_TARGETS = all depend install preinstall-recursive $(TARGET_VARIANTS)
+# default
+COMPILE.r = $(FC) $(FFLAGS) $(RFLAGS) $(TARGET_ARCH) -c
+# default
+LINK.F = $(FC) $(FFLAGS) $(CPPFLAGS) $(LDFLAGS) $(TARGET_ARCH)
+# makefile
+RTEMS_CPU = m68k
+# makefile
+ASFLAGS = $(CPU_ASFLAGS) $(XASFLAGS)
+# makefile
+CONFIG.CC = $(RTEMS_ROOT)/make/compilers/gcc-target-default.cfg
+# default
+LINK.s = $(CC) $(ASFLAGS) $(LDFLAGS) $(TARGET_MACH)
+# environment
+MAIL = /var/spool/mail/profesor
+# makefile
+LDFLAGS_DYNAMIC_LIBNAME_V = -h $(DYNAMIC_VERSION_LIBNAME)
+# environment
+PWD = /home/profesor/rtems/tools/robot1
+# environment
+XAUTHORITY = /home/profesor/.Xauthority
+# default
+LINK.o = $(CC) $(LDFLAGS) $(TARGET_ARCH)
+# environment
+HISTFILESIZE = 1000
+# makefile
+CLEAN_OS = 
+# default
+TEXI2DVI = texi2dvi
+# default
+CURDIR := /home/profesor/rtems/tools/robot1
+# automatic
++F = $(notdir $+)
+# default
+COMPILE.f = $(FC) $(FFLAGS) $(TARGET_ARCH) -c
+# makefile
+LIBC_LIBM = $(shell $(CC) $(CPU_CFLAGS) -print-file-name=libm.a $(GCCSED))
+# makefile
+INSTALL_CHANGE = $(prefix)/bin/install-if-change
+# makefile
+PROJECT_TOOLS = $(PROJECT_RELEASE)/build-tools
+# makefile
+MV = /bin/mv
+# automatic
+%F = $(notdir $%)
+# makefile
+INSTDIRFLAGS = -m 0755 -d
+# default
+LINK.c = $(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) $(TARGET_ARCH)
+# makefile
+TARGET_profile_V = all
+# makefile
+LIBC_LOW = 
+# default
+CO = co
+# automatic
+?D = $(patsubst %/,%,$(dir $?))
+# environment
+GDMSESSION = Default
+# environment
+_ = /usr/bin/gnome-terminal
+# default
+PREPROCESS.F = $(FC) $(FFLAGS) $(CPPFLAGS) $(TARGET_ARCH) -F
+# makefile
+define make-target-options
+	@echo "/* #define NDEBUG 1 */ "                     >>$@
+	@echo "#define RTEMS_TEST_NO_PAUSE 1"               >>$@
+	@echo "/* #define RTEMS_DEBUG  1 */"                >>$@
+endef
+# automatic
+<D = $(patsubst %/,%,$(dir $<))
+# environment
+ENV = /home/profesor/.bashrc
+# default
+M2C = m2c
+# makefile
+CXXSRCS = 
+# environment
+LINGUAS = en
+# makefile
+PROJECT_RELEASE = $(PROJECT_ROOT)/$(RTEMS_BSP)
+# default
+FC = f77
+# makefile
+START_FILE = $(PROJECT_RELEASE)/lib/$(START_BASE)$(LIB_VARIANT).o
+# makefile
+CXXOBJS = $(CXXOBJS_:%=${ARCH}/%)
+# makefile
+ASOBJS = $(ASOBJS_:%=${ARCH}/%)
+# makefile
+INSTBINFLAGS = -m 0755
+# makefile
+NM_FOR_TARGET = /usr/local/rtems/m68k-rtems/bin/nm
+# makefile
+CC = /usr/local/rtems/bin/m68k-rtems-gcc --pipe $(GCCSPECS)
+# default
+LINK.S = $(CC) $(ASFLAGS) $(CPPFLAGS) $(LDFLAGS) $(TARGET_MACH)
+# makefile
+LDFLAGS_DEBUG_V = 
+# makefile
+CXX =  $(GCCSPECS)
+# makefile
+AR = /usr/local/rtems/m68k-rtems/bin/ar
+# environment
+PREVLEVEL = N
+# makefile
+ASOBJS_ = $(ASSRCS:.s=.o)
+# makefile
+LINKCMDS = $(PROJECT_RELEASE)/lib/linkcmds
+# makefile
+CLEAN_CC = a.out *.o *.BAK
+# makefile
+CFLAGS_PROFILE_V = -pg
+# makefile
+RTEMS_HAS_NETWORKING = yes
+# default
+CWEAVE = cweave
+# makefile
+TARGET_debug_V = all
+# makefile
+make-rel = 	$(LINK.c) $(AM_CFLAGS) $(AM_LDFLAGS) -qnolinkcmds -nostdlib -Wl,-r $(XLDFLAGS) -o $@ $^
+# makefile
+NM = /usr/local/rtems/m68k-rtems/bin/nm
+# makefile
+CFLAGS_DEBUG_V = -Wno-unused -qrtems_debug
+# makefile
+RTEMS_HAS_CPLUSPLUS = no
+# makefile
+LDFLAGS_DYNAMIC_V = ??
+# makefile
+RTEMS_BSP_SPECS = $(PROJECT_ROOT)/$(RTEMS_BSP)/lib/bsp_specs
+# environment
+MACHTYPE = i386
+# makefile
+VARIANT-o-debug-v = debug
+# default
+COMPILE.F = $(FC) $(FFLAGS) $(CPPFLAGS) $(TARGET_ARCH) -c
+# environment
+USER = profesor
+# automatic
+*D = $(patsubst %/,%,$(dir $*))
+# automatic
+^D = $(patsubst %/,%,$(dir $^))
+# default
+COMPILE.s = $(AS) $(ASFLAGS) $(TARGET_MACH)
+# makefile
+LINK_OBJS = $(CONSTRUCTOR) $(OBJS) $(MANAGERS_NOT_WANTED:%=$(PROJECT_RELEASE)/lib/no-%$(LIB_VARIANT).rel)
+# makefile
+CHMOD = chmod
+# makefile
+SHELL = /bin/sh
+# makefile
+RANLIB = /usr/local/rtems/m68k-rtems/bin/ranlib
+# default
+YACC = yacc
+# default
+COMPILE.def = $(M2C) $(M2FLAGS) $(DEFFLAGS) $(TARGET_ARCH)
+# makefile
+CONSTRUCTOR = 
+# makefile
+AS_FOR_TARGET = /usr/local/rtems/m68k-rtems/bin/as
+# makefile
+MANAGERS := io
+# makefile
+INLINE_UPCASE = INLINE
+# default
+LINK.C = $(LINK.cc)
+# makefile
+BARE_CPU_MODEL = 
+# makefile
+CPPFLAGS =  $(CPU_DEFINES) $(CPU_CFLAGS) $(DEFINES) $(XCPPFLAGS) 
+# makefile
+MAKEFLAGS = p
+# makefile
+RTEMS_BSP_FAMILY = mrm
+# default
+LINK.p = $(PC) $(PFLAGS) $(CPPFLAGS) $(LDFLAGS) $(TARGET_ARCH)
+# makefile
+INSTDATAFLAGS = -m 0644
+# makefile
+LIBSUFFIX_o-debug_V = _g
+# makefile
+LDFLAGS = $(LDFLAGS_PROFILE) $(LDFLAGS_DEBUG) $(LD_PATHS:%=-L %)
+# default
+OUTPUT_OPTION = -o $@
+# default
+MAKE_VERSION := 3.77
+# environment
+HOSTTYPE = i386-linux
+# makefile
+RTEMS_HAS_POSIX_API = no
+# makefile
+RTEMS_CUSTOM = $(prefix)/make/custom/$(RTEMS_BSP).cfg
+# default
+PREPROCESS.S = $(CC) -E $(CPPFLAGS)
+# makefile
+HAS_ITRON_API = yes
+# environment
+MAKELEVEL := 0
+# makefile
+CFLAGS = $(CFLAGS_DEFAULT) $(XCFLAGS) $(CFLAGS_OPTIMIZE) $(CFLAGS_DEBUG) $(CFLAGS_PROFILE)
+# makefile
+LIBSUFFIX_o-optimize_V = 
+# makefile
+CXXOBJS_ = $(CXXSRCS:.cc=.o)
+# makefile
+COBJS = $(COBJS_:%=${ARCH}/%)
+# environment
+CVSROOT = /usr/local/cvsroot
+# default
+YACC.y = $(YACC) $(YFLAGS)
+# default
+COMPILE.c = $(CC) $(CFLAGS) $(CPPFLAGS) $(TARGET_ARCH) -c
+# default
+TANGLE = tangle
+# makefile
+SIZE_FOR_TARGET = /usr/local/rtems/bin/m68k-rtems-size
+# makefile
+LIBS = 
+# makefile
+AR_FOR_TARGET = /usr/local/rtems/m68k-rtems/bin/ar
+# environment
+GROUP = users
+# makefile
+INSTALL_VARIANT = $(INSTALL_CHANGE) -V "$(LIB_VARIANT)"
+# makefile
+VARIANTS = ${TARGET_VARIANTS:%=o-%}
+# makefile
+CP = /bin/cp
+# default
+CHECKOUT,v = +$(patsubst $@-noexist,$(CO) $(COFLAGS) $< $@,		 $(filter-out $@,$(firstword $(wildcard $@) $@-noexist)))
+# makefile
+CFLAGS_OPTIMIZE = $(CFLAGS_OPTIMIZE_V)
+# makefile
+MAKEFILE = Makefile
+# makefile
+LD = /usr/local/rtems/m68k-rtems/bin/ld
+# makefile
+GCCSED = 
+# environment
+KDEDIR = /usr
+# environment
+MFLAGS = -p
+# makefile
+RTEMS_HOST = linux-gnu
+# default
+GET = get
+# environment
+RCX_PORT = /dev/ttyS1
+# environment
+HOSTNAME = harmless.gweep.net
+# default
+COMPILE.S = $(CC) $(ASFLAGS) $(CPPFLAGS) $(TARGET_MACH) -c
+# makefile
+RTEMS_LIBC_DIR = 
+# environment
+GDM_LANG = en_US
+# makefile
+GCCSPECS = -B$(PROJECT_RELEASE)/lib/ -specs bsp_specs -qrtems
+# default
+PC = pc
+# makefile
+RTEMS_CPU_MODEL = mcpu32
+# makefile
+PACKHEX = $(prefix)/bin/packhex
+# makefile
+LIB_VARIANT = $(LIBSUFFIX_$(ARCH)_V)
+# makefile
+AS = /usr/local/rtems/m68k-rtems/bin/as
+# automatic
+@D = $(patsubst %/,%,$(dir $@))
+# environment
+WINDOWID = 71303278
+# default
+TEX = tex
+# environment
+TERM = xterm
+# makefile
+KSH = /bin/bash
+# makefile
+VARIANT-o-profile-v = profile
+# makefile
+LD_PATHS = $(PROJECT_RELEASE)/lib
+# default
+COMPILE.cpp = $(COMPILE.cc)
+# environment
+DISPLAY = :0
+# environment
+LOGNAME = profesor
+# environment
+VENDOR = intel
+# environment
+SHLVL = 3
+# environment
+LD_LIBRARY_PATH = /usr/local/lib:/usr/local/nspr/lib
+# default
+COMPILE.C = $(COMPILE.cc)
+# default
+LINT = lint
+# makefile
+COBJS_ = $(CSRCS:.c=.o)
+# default
+F77FLAGS = $(FFLAGS)
+# default
+COMPILE.p = $(PC) $(PFLAGS) $(CPPFLAGS) $(TARGET_ARCH) -c
+# environment
+LANG = en
+# makefile
+VARIANT_VA = $(VARIANT-$(ARCH)-v)
+# makefile
+HAS_CPLUSPLUS = no
+# environment
+BOOT_IMAGE = linux
+# makefile
+HAS_POSIX_API = no
+# default
+RM = rm -f
+# makefile
+RTEMS_CROSS_TARGET = yes
+# makefile
+HAS_MP = no
+# automatic
++D = $(patsubst %/,%,$(dir $+))
+# makefile
+ARCH = o-optimize
+# makefile
+define make-script
+	-$(RM) $@
+	$(SED) -e '1,1s?^#!KSHELL?#!$(KSH)?' -e '1,1s?^#!SHELL?#!$(SHELL)?' < $< > $@
+	$(CHMOD) 0555 $@
+endef
+# default
+WEAVE = weave
+# environment
+RUNLEVEL = 5
+# makefile
+ASSRCS = 
+# environment
+HOST = harmless.gweep.net
+# makefile
+MANAGERS_REQUIRED = region ext sem
+# makefile
+MKDIR = mkdir
+# makefile
+SIZE = /usr/local/rtems/bin/m68k-rtems-size
+# environment
+OSTYPE = linux
+# makefile
+RTEMS_HAS_ITRON_API = yes
+# makefile
+XCFLAGS = $(CFLAGS_FOR_TARGET)
+# automatic
+?F = $(notdir $?)
+# makefile
+LIBSUFFIX_o-profile_V = _p
+# automatic
+%D = $(patsubst %/,%,$(dir $%))
+# makefile
+LDFLAGS_PROFILE_V = 
+# makefile
+CPP = $(CC) -E -ansi -w -Wp,-$$
+# makefile
+LINK_FILES = $(START_FILE) $(CONSTRUCTOR) $(OBJS) $(MANAGERS_NOT_WANTED:%=$(PROJECT_RELEASE)/lib/no-%$(LIB_VARIANT).rel) $(PROJECT_RELEASE)/lib/librtemsall$(LIBSUFFIX_VA)
+# automatic
+<F = $(notdir $<)
+# environment
+HISTSIZE = 1000
+# makefile
+LIBC_LIBC = $(shell $(CC) $(CPU_CFLAGS) -print-file-name=libc.a $(GCCSED))
+# environment
+INPUTRC = /etc/inputrc
+# makefile
+CFLAGS_DEFAULT = -g -Wall -ansi -fasm
+# default
+LEX = lex
+# makefile
+LIBSUFFIX_VA = $(LIB_VARIANT).a
+# makefile
+CLOBBER_DEPEND = $(DEPEND)
+# makefile
+define make-exe
+	$(LINK.c) $(AM_CFLAGS) $(AM_LDFLAGS) -o $(basename $@).nxe $(LINK_OBJS) $(LINK_LIBS)
+	$(OBJCOPY) -O srec $(basename $@).nxe $(basename $@).i
+	$(SED) -e 's/.$$//' -e '/^S0/d' $(basename $@).i | $(PACKHEX) > $(basename $@).exe
+	$(NM) -g -n $(basename $@).nxe > $(basename $@).num
+	$(SIZE) $(basename $@).nxe
+endef
+# makefile
+HAS_NETWORKING = yes
+# default
+LINK.cc = $(CXX) $(CXXFLAGS) $(CPPFLAGS) $(LDFLAGS) $(TARGET_ARCH)
+# makefile
+INLINE = inline
+# makefile
+RTEMS_ROOT = $(PROJECT_ROOT)
+# makefile
+CLOBBER_OS = *~ *.bak TAGS tags
+# makefile
+VARIANT-o-optimize-v = 
+# makefile
+MANAGER_LIST = dpmem event io msg mp part region sem signal timer rtmon ext
+# makefile
+RTEMS_HAS_MULTIPROCESSING = no
+# default
+LEX.l = $(LEX) $(LFLAGS) -t
+# environment
+SESSION_MANAGER = local/harmless.gweep.net:/tmp/.ICE-unix/889,tcp/harmless.gweep.net:1025
+# makefile
+CAT = cat
+# makefile
+SED = sed
+# default
+COMPILE.mod = $(M2C) $(M2FLAGS) $(MODFLAGS) $(TARGET_ARCH)
+# makefile
+ARFLAGS = ruv
+# makefile
+INSTINCFLAGS = -m 0644
+# makefile
+STRIP = /usr/local/rtems/m68k-rtems/bin/strip
+# makefile
+AR_SYMBOL_TABLE = "HIGHLY-UNLIKELY-TO-CONFLICT"
+# automatic
+*F = $(notdir $*)
+# makefile
+OBJS = $(COBJS) $(CXXOBJS) $(ASOBJS)
+# makefile
+RTEMS_USE_GCC272 = no
+# automatic
+^F = $(notdir $^)
+# environment
+COLORTERM = gnome-terminal
+# makefile
+prefix = /usr/local/rtems
+# makefile
+MANAGERS_NOT_WANTED = $(filter-out $(MANAGERS) $(MANAGERS_REQUIRED), $(MANAGER_LIST))
+# makefile
+CSRCS = test.c fqd.c tpu.c
+# makefile
+RTEMS_USE_OWN_PDIR = no
+# makefile
+DEPEND = Depends-${ARCH}
+# default
+LINT.c = $(LINT) $(LINTFLAGS) $(CPPFLAGS) $(TARGET_ARCH)
+# makefile
+LIBGCC = $(shell $(CC) $(CFLAGS) -print-libgcc-file-name $(GCCSED))
+# makefile
+EXEC = test.exe
+# default
+LINK.r = $(FC) $(FFLAGS) $(RFLAGS) $(LDFLAGS) $(TARGET_ARCH)
+# default
+LINK.cpp = $(LINK.cc)
+# makefile
+RTEMS_USE_MACROS = no
+# makefile
+CLEAN_DEPEND = $(DEPEND).tmp
+# makefile
+CC_FOR_TARGET = /usr/local/rtems/bin/m68k-rtems-gcc --pipe
+# makefile
+INSTLIBFLAGS = -m 0644 
+# default
+COMPILE.cc = $(CXX) $(CXXFLAGS) $(CPPFLAGS) $(TARGET_ARCH) -c
+# environment
+RTEMS_MAKEFILE_PATH = /usr/local/rtems/mrm
+# makefile
+RTEMS_HAS_RDBG = no
+# default
+MAKEFILES := 
+# makefile
+HAS_RDBG = no
+# makefile
+LN = /bin/ln
+# default
+CTANGLE = ctangle
+# default
+MAKE_COMMAND := make
+# makefile
+LDFLAGS_INCOMPLETE = -r
+# makefile
+ECHO = echo
+# environment
+PATH = /usr/bin:/bin:/usr/X11R6/bin:/usr/local/bin:/opt/bin:/usr/X11R6/bin:/home/profesor/bin:/usr/X11R6/bin:/home/profesor/bin:/usr/X11R6/bin:/home/profesor/bin:/usr/local/rtems/bin
+# environment
+RCXTTY = /dev/ttyS1
+# environment
+INIT_VERSION = sysvinit-2.77
+# makefile
+CLOBBER_CC = 
+# default
+LINK.f = $(FC) $(FFLAGS) $(LDFLAGS) $(TARGET_ARCH)
+# environment
+CONSOLE = /dev/console
+# default
+MAKEINFO = makeinfo
+# makefile
+LINK_LIBS = $(LD_LIBS)    
+# 266 variables in 523 hash buckets.
+# average of 0.5 variables per bucket, max 4 in one bucket.
+
+# Directories
+
+# SCCS: could not be stat'd.
+# /usr/local/rtems//make/RCS: could not be stat'd.
+# o-optimize: could not be stat'd.
+# /usr/local/rtems//mrm/make/SCCS: could not be stat'd.
+# /usr/local/rtems/mrm/RCS: could not be stat'd.
+# /usr/local/rtems//make/compilers (device 771, inode 157947): 3 files, 17 impossibilities.
+# /usr/local/rtems//mrm/make/RCS: could not be stat'd.
+# /usr/local/rtems//make/custom/RCS: could not be stat'd.
+# /usr/local/rtems//make/custom (device 771, inode 157945): 5 files, 34 impossibilities.
+# /usr/local/rtems//make (device 771, inode 671865): 12 files, 68 impossibilities.
+# /usr/local/rtems//make/compilers/RCS: could not be stat'd.
+# /usr/local/rtems/mrm/SCCS: could not be stat'd.
+# . (device 771, inode 866531): 17 files, 43 impossibilities.
+# /usr/local/rtems/make/custom/SCCS: could not be stat'd.
+# /usr/local/rtems//make/custom/SCCS: could not be stat'd.
+# RCS: could not be stat'd.
+# /usr/local/rtems/make/custom (device 771, inode 157945): 5 files, 34 impossibilities.
+# /usr/local/rtems//mrm/make (device 771, inode 671887): 3 files, 17 impossibilities.
+# /usr/local/rtems/make/custom/RCS: could not be stat'd.
+# /usr/local/rtems//make/compilers/SCCS: could not be stat'd.
+# /usr/local/rtems/mrm (device 771, inode 583828): 6 files, 17 impossibilities.
+# /usr/local/rtems//make/SCCS: could not be stat'd.
+
+# 51 files, 230 impossibilities in 22 directories.
+
+# Implicit Rules
+
+o-optimize/%.o: %.c
+#  commands to execute (from `/usr/local/rtems//make/compilers/gcc-target-default.cfg', line 170):
+	${COMPILE.c} $(AM_CPPFLAGS) $(AM_CFLAGS) -o $@ $<
+	
+
+o-optimize/%.o: %.cc
+#  commands to execute (from `/usr/local/rtems//make/compilers/gcc-target-default.cfg', line 173):
+	${COMPILE.cc} $(AM_CPPFLAGS) $(AM_CXXFLAGS) -o $@ $<
+	
+
+o-optimize/%.o: %.cpp
+#  commands to execute (from `/usr/local/rtems//make/compilers/gcc-target-default.cfg', line 176):
+	${COMPILE.cc} $(AM_CPPFLAGS) $(AM_CXXFLAGS) -o $@ $<
+	
+
+o-optimize/%.o: %.cxx
+#  commands to execute (from `/usr/local/rtems//make/compilers/gcc-target-default.cfg', line 179):
+	${COMPILE.cc} $(AM_CPPFLAGS) $(AM_CXXFLAGS) -o $@ $<
+	
+
+o-optimize/%.o: %.C
+#  commands to execute (from `/usr/local/rtems//make/compilers/gcc-target-default.cfg', line 182):
+	${COMPILE.cc} $(AM_CPPFLAGS) $(AM_CXXFLAGS) -o $@ $<
+	
+
+o-optimize/%.o: %.S
+#  commands to execute (from `/usr/local/rtems//make/compilers/gcc-target-default.cfg', line 185):
+	${COMPILE.S} $(AM_CPPFLAGS) -DASM -o $@ $<
+	
+
+o-optimize/%.rel: o-optimize/%.o
+#  commands to execute (from `/usr/local/rtems//make/compilers/gcc-target-default.cfg', line 189):
+	${make-rel}
+	
+
+o-optimize/%: %.sh
+#  commands to execute (from `/usr/local/rtems//make/compilers/gcc-target-default.cfg', line 193):
+	$(RM) $@
+	$(CP) $< $@
+	$(CHMOD) +x $@
+	
+
+%.out:
+
+%.a:
+
+%.ln:
+
+%.o:
+
+%: %.o
+#  commands to execute (built-in):
+	$(LINK.o) $^ $(LOADLIBES) $(LDLIBS) -o $@
+
+%.c:
+
+%: %.c
+#  commands to execute (built-in):
+	$(LINK.c) $^ $(LOADLIBES) $(LDLIBS) -o $@
+
+%.ln: %.c
+#  commands to execute (built-in):
+	$(LINT.c) -C$* $<
+
+%.o: %.c
+#  commands to execute (built-in):
+	$(COMPILE.c) $< $(OUTPUT_OPTION)
+
+%.cc:
+
+%: %.cc
+#  commands to execute (built-in):
+	$(LINK.cc) $^ $(LOADLIBES) $(LDLIBS) -o $@
+
+%.o: %.cc
+#  commands to execute (built-in):
+	$(COMPILE.cc) $< $(OUTPUT_OPTION)
+
+%.C:
+
+%: %.C
+#  commands to execute (built-in):
+	$(LINK.C) $^ $(LOADLIBES) $(LDLIBS) -o $@
+
+%.o: %.C
+#  commands to execute (built-in):
+	$(COMPILE.C) $< $(OUTPUT_OPTION)
+
+%.cpp:
+
+%: %.cpp
+#  commands to execute (built-in):
+	$(LINK.cpp) $^ $(LOADLIBES) $(LDLIBS) -o $@
+
+%.o: %.cpp
+#  commands to execute (built-in):
+	$(COMPILE.cpp) $< $(OUTPUT_OPTION)
+
+%.p:
+
+%: %.p
+#  commands to execute (built-in):
+	$(LINK.p) $^ $(LOADLIBES) $(LDLIBS) -o $@
+
+%.o: %.p
+#  commands to execute (built-in):
+	$(COMPILE.p) $< $(OUTPUT_OPTION)
+
+%.f:
+
+%: %.f
+#  commands to execute (built-in):
+	$(LINK.f) $^ $(LOADLIBES) $(LDLIBS) -o $@
+
+%.o: %.f
+#  commands to execute (built-in):
+	$(COMPILE.f) $< $(OUTPUT_OPTION)
+
+%.F:
+
+%: %.F
+#  commands to execute (built-in):
+	$(LINK.F) $^ $(LOADLIBES) $(LDLIBS) -o $@
+
+%.o: %.F
+#  commands to execute (built-in):
+	$(COMPILE.F) $< $(OUTPUT_OPTION)
+
+%.f: %.F
+#  commands to execute (built-in):
+	$(PREPROCESS.F) $< $(OUTPUT_OPTION)
+
+%.r:
+
+%: %.r
+#  commands to execute (built-in):
+	$(LINK.r) $^ $(LOADLIBES) $(LDLIBS) -o $@
+
+%.o: %.r
+#  commands to execute (built-in):
+	$(COMPILE.r) $< $(OUTPUT_OPTION)
+
+%.f: %.r
+#  commands to execute (built-in):
+	$(PREPROCESS.r) $< $(OUTPUT_OPTION)
+
+%.y:
+
+%.ln: %.y
+#  commands to execute (built-in):
+	$(YACC.y) $< 
+	$(LINT.c) -C$* y.tab.c 
+	$(RM) y.tab.c
+
+%.c: %.y
+#  commands to execute (built-in):
+	$(YACC.y) $< 
+	mv -f y.tab.c $@
+
+%.l:
+
+%.ln: %.l
+#  commands to execute (built-in):
+	@$(RM) $*.c
+	$(LEX.l) $< > $*.c
+	$(LINT.c) -i $*.c -o $@
+	$(RM) $*.c
+
+%.c: %.l
+#  commands to execute (built-in):
+	@$(RM) $@ 
+	$(LEX.l) $< > $@
+
+%.r: %.l
+#  commands to execute (built-in):
+	$(LEX.l) $< > $@ 
+	mv -f lex.yy.r $@
+
+%.s:
+
+%: %.s
+#  commands to execute (built-in):
+	$(LINK.s) $^ $(LOADLIBES) $(LDLIBS) -o $@
+
+%.o: %.s
+#  commands to execute (built-in):
+	$(COMPILE.s) -o $@ $<
+
+%.S:
+
+%: %.S
+#  commands to execute (built-in):
+	$(LINK.S) $^ $(LOADLIBES) $(LDLIBS) -o $@
+
+%.o: %.S
+#  commands to execute (built-in):
+	$(COMPILE.S) -o $@ $<
+
+%.s: %.S
+#  commands to execute (built-in):
+	$(PREPROCESS.S) $< > $@
+
+%.mod:
+
+%: %.mod
+#  commands to execute (built-in):
+	$(COMPILE.mod) -o $@ -e $@ $^
+
+%.o: %.mod
+#  commands to execute (built-in):
+	$(COMPILE.mod) -o $@ $<
+
+%.sym:
+
+%.def:
+
+%.sym: %.def
+#  commands to execute (built-in):
+	$(COMPILE.def) -o $@ $<
+
+%.h:
+
+%.info:
+
+%.dvi:
+
+%.tex:
+
+%.dvi: %.tex
+#  commands to execute (built-in):
+	$(TEX) $<
+
+%.texinfo:
+
+%.info: %.texinfo
+#  commands to execute (built-in):
+	$(MAKEINFO) $(MAKEINFO_FLAGS) $< -o $@
+
+%.dvi: %.texinfo
+#  commands to execute (built-in):
+	$(TEXI2DVI) $(TEXI2DVI_FLAGS) $<
+
+%.texi:
+
+%.info: %.texi
+#  commands to execute (built-in):
+	$(MAKEINFO) $(MAKEINFO_FLAGS) $< -o $@
+
+%.dvi: %.texi
+#  commands to execute (built-in):
+	$(TEXI2DVI) $(TEXI2DVI_FLAGS) $<
+
+%.txinfo:
+
+%.info: %.txinfo
+#  commands to execute (built-in):
+	$(MAKEINFO) $(MAKEINFO_FLAGS) $< -o $@
+
+%.dvi: %.txinfo
+#  commands to execute (built-in):
+	$(TEXI2DVI) $(TEXI2DVI_FLAGS) $<
+
+%.w:
+
+%.c: %.w
+#  commands to execute (built-in):
+	$(CTANGLE) $< - $@
+
+%.tex: %.w
+#  commands to execute (built-in):
+	$(CWEAVE) $< - $@
+
+%.ch:
+
+%.web:
+
+%.p: %.web
+#  commands to execute (built-in):
+	$(TANGLE) $<
+
+%.tex: %.web
+#  commands to execute (built-in):
+	$(WEAVE) $<
+
+%.sh:
+
+%: %.sh
+#  commands to execute (built-in):
+	cat $< >$@ 
+	chmod a+x $@
+
+%.elc:
+
+%.el:
+
+(%): %
+#  commands to execute (built-in):
+	$(AR) $(ARFLAGS) $@ $<
+
+%.out: %
+#  commands to execute (built-in):
+	@rm -f $@ 
+	cp $< $@
+
+%.c: %.w %.ch
+#  commands to execute (built-in):
+	$(CTANGLE) $^ $@
+
+%.tex: %.w %.ch
+#  commands to execute (built-in):
+	$(CWEAVE) $^ $@
+
+%:: %,v
+#  commands to execute (built-in):
+	$(CHECKOUT,v)
+
+%:: RCS/%,v
+#  commands to execute (built-in):
+	$(CHECKOUT,v)
+
+%:: RCS/%
+#  commands to execute (built-in):
+	$(CHECKOUT,v)
+
+%:: s.%
+#  commands to execute (built-in):
+	$(GET) $(GFLAGS) $(SCCS_OUTPUT_OPTION) $<
+
+%:: SCCS/s.%
+#  commands to execute (built-in):
+	$(GET) $(GFLAGS) $(SCCS_OUTPUT_OPTION) $<
+
+# 94 implicit rules, 5 (5.3%) terminal.
+
+# Pattern-specific variable values
+
+# No pattern-specific variable values.
+
+# Files
+
+# Not a target:
+.c:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (built-in):
+	$(LINK.c) $^ $(LOADLIBES) $(LDLIBS) -o $@
+
+profile:
+#  Phony target (dependency of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  commands to execute (from `/usr/local/rtems//make/leaf.cfg', line 56):
+	$(MAKE) -f $(MAKEFILE) \
+	MAKEFILE=$(MAKEFILE) "ARCH=o-profile" \
+	"CFLAGS_PROFILE=$(CFLAGS_PROFILE_V)" \
+	"LDFLAGS_PROFILE=$(LDFLAGS_PROFILE_V)" $(TARGET_VA)
+	
+
+# Not a target:
+.texinfo.info:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (built-in):
+	$(MAKEINFO) $(MAKEINFO_FLAGS) $< -o $@
+
+# Not a target:
+.mod.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (built-in):
+	$(COMPILE.mod) -o $@ $<
+
+# Not a target:
+.c.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (built-in):
+	$(COMPILE.c) $< $(OUTPUT_OPTION)
+
+# Not a target:
+.s:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (built-in):
+	$(LINK.s) $^ $(LOADLIBES) $(LDLIBS) -o $@
+
+# Not a target:
+Makefile:
+#  Implicit rule search has been done.
+#  Last modified Sun Dec 31 20:42:43 2000 (978313363)
+#  File has been updated.
+#  Successfully updated.
+
+clean-generic:
+#  Phony target (dependency of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  commands to execute (from `/usr/local/rtems//make/main.cfg', line 70):
+	-$(RM) a.out core mon.out gmon.out
+	-$(RM) -r $(CLEAN_ADDITIONS)
+	
+
+distclean-am: distclean-generic clean-am
+#  Phony target (dependency of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  commands to execute (from `/usr/local/rtems//make/leaf.cfg', line 109):
+	-$(RM) -r $(CLOBBER_OS) $(CLOBBER_CC) $(CLOBBER_DEPEND)
+	
+
+# Not a target:
+.txinfo.dvi:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (built-in):
+	$(TEXI2DVI) $(TEXI2DVI_FLAGS) $<
+
+# Not a target:
+/usr/local/rtems//make/compilers/gcc-target-default.cfg:
+#  Implicit rule search has been done.
+#  Last modified Tue Dec 12 19:34:19 2000 (976667659)
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+.DEFAULT:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+.y.c:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (built-in):
+	$(YACC.y) $< 
+	mv -f y.tab.c $@
+
+# Not a target:
+.l:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+.web.tex:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (built-in):
+	$(WEAVE) $<
+
+# Not a target:
+.s.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (built-in):
+	$(COMPILE.s) -o $@ $<
+
+# Not a target:
+.sym:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+.texi:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+preinstall-recursive:
+#  Phony target (dependency of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+
+# Not a target:
+.F.f:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (built-in):
+	$(PREPROCESS.F) $< $(OUTPUT_OPTION)
+
+distclean: distclean-am
+#  Phony target (dependency of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  commands to execute (from `/usr/local/rtems//make/leaf.cfg', line 116):
+	-$(RM) ./config.status
+	
+
+# Not a target:
+.dvi:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+tpu.c:
+#  Implicit rule search has been done.
+#  Last modified Sun Dec 31 20:30:48 2000 (978312648)
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+.web.p:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (built-in):
+	$(TANGLE) $<
+
+# Not a target:
+.def:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+.F:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (built-in):
+	$(LINK.F) $^ $(LOADLIBES) $(LDLIBS) -o $@
+
+debug:
+#  Phony target (dependency of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  commands to execute (from `/usr/local/rtems//make/leaf.cfg', line 50):
+	$(MAKE) -f $(MAKEFILE) MAKEFILE=$(MAKEFILE) "ARCH=o-debug" \
+	"CFLAGS_DEBUG=$(CFLAGS_DEBUG_V)" \
+	"CFLAGS_OPTIMIZE=$(CFLAGS_OPTIMIZE_V)" \
+	"LDFLAGS_DEBUG=$(LDFLAGS_DEBUG_V)" $(TARGET_VA)
+	
+
+clean: clean-am
+#  Phony target (dependency of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+
+# Not a target:
+.cc.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (built-in):
+	$(COMPILE.cc) $< $(OUTPUT_OPTION)
+
+# Not a target:
+.S.s:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (built-in):
+	$(PREPROCESS.S) $< > $@
+
+# Not a target:
+.ch:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+.def.sym:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (built-in):
+	$(COMPILE.def) -o $@ $<
+
+default_target: all
+#  Implicit rule search has been done.
+#  File does not exist.
+#  File has been updated.
+#  Successfully updated.
+# No variables.
+
+# Not a target:
+.F.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (built-in):
+	$(COMPILE.F) $< $(OUTPUT_OPTION)
+
+# Not a target:
+.f:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (built-in):
+	$(LINK.f) $^ $(LOADLIBES) $(LDLIBS) -o $@
+
+o-optimize:
+#  Implicit rule search has not been done.
+#  Implicit/static pattern stem: `'
+#  Last modified Sun Dec 31 21:00:45 2000 (978314445)
+#  File has been updated.
+#  Successfully updated.
+# automatic
+# ^ := 
+# automatic
+# @ := o-optimize
+# automatic
+# + := 
+# automatic
+# ? := 
+# automatic
+# * := 
+# automatic
+# % := 
+# automatic
+# < := 
+# 7 variables in 23 hash buckets.
+# average of 0.3 variables per bucket, max 2 in one bucket.
+#  commands to execute (from `/usr/local/rtems//make/main.cfg', line 62):
+	test -d ${ARCH} || mkdir ${ARCH}
+	
+
+# Not a target:
+.elc:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+.y.ln:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (built-in):
+	$(YACC.y) $< 
+	$(LINT.c) -C$* y.tab.c 
+	$(RM) y.tab.c
+
+# Not a target:
+.texi.dvi:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (built-in):
+	$(TEXI2DVI) $(TEXI2DVI_FLAGS) $<
+
+# Not a target:
+.el:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+.texinfo.dvi:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (built-in):
+	$(TEXI2DVI) $(TEXI2DVI_FLAGS) $<
+
+distclean-generic:
+#  Phony target (dependency of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  commands to execute (from `/usr/local/rtems//make/main.cfg', line 66):
+	-$(RM) .#* $(CONFIG_CLEAN_FILES)
+	-$(RM) -r $(CLOBBER_ADDITIONS)
+	
+
+preinstall: preinstall-am
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+.SUFFIXES: .out .a .ln .o .c .cc .C .cpp .p .f .F .r .y .l .s .S .mod .sym .def .h .info .dvi .tex .texinfo .texi .txinfo .w .ch .web .sh .elc .el
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+.txinfo:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+clean-am: clean-generic
+#  Phony target (dependency of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  commands to execute (from `/usr/local/rtems//make/leaf.cfg', line 105):
+	-$(RM) -r $(CLEAN_OS) $(CLEAN_CC) $(CLEAN_DEPEND)
+	-$(RM) -r $(VARIANTS)
+	
+
+# Not a target:
+.p.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (built-in):
+	$(COMPILE.p) $< $(OUTPUT_OPTION)
+
+# Not a target:
+.r.f:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (built-in):
+	$(PREPROCESS.r) $< $(OUTPUT_OPTION)
+
+# Not a target:
+.w.tex:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (built-in):
+	$(CWEAVE) $< - $@
+
+# Not a target:
+/usr/local/rtems//make/leaf.cfg:
+#  Implicit rule search has been done.
+#  Last modified Tue Dec 12 19:34:15 2000 (976667655)
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+.txinfo.info:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (built-in):
+	$(MAKEINFO) $(MAKEINFO_FLAGS) $< -o $@
+
+# Not a target:
+.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (built-in):
+	$(LINK.o) $^ $(LOADLIBES) $(LDLIBS) -o $@
+
+# Not a target:
+.c.ln:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (built-in):
+	$(LINT.c) -C$* $<
+
+# Not a target:
+.w:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+.ln:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+/usr/local/rtems/mrm/Makefile.inc:
+#  Implicit rule search has been done.
+#  Last modified Tue Dec 12 19:34:19 2000 (976667659)
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+.l.r:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (built-in):
+	$(LEX.l) $< > $@ 
+	mv -f lex.yy.r $@
+
+all: o-optimize o-optimize/test.exe
+#  Phony target (dependency of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has been updated.
+#  Successfully updated.
+# No variables.
+
+# Not a target:
+.info:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+o-optimize/test.exe: o-optimize/test.o o-optimize/fqd.o o-optimize/tpu.o
+#  Implicit rule search has not been done.
+#  Implicit/static pattern stem: `'
+#  Last modified Sun Dec 31 21:01:00 2000 (978314460)
+#  File has been updated.
+#  Successfully updated.
+# automatic
+# ^ := o-optimize/test.o o-optimize/fqd.o o-optimize/tpu.o
+# automatic
+# @ := o-optimize/test.exe
+# automatic
+# + := o-optimize/test.o o-optimize/fqd.o o-optimize/tpu.o
+# automatic
+# ? := o-optimize/test.o o-optimize/fqd.o o-optimize/tpu.o
+# automatic
+# * := 
+# automatic
+# % := 
+# automatic
+# < := o-optimize/test.o
+# 7 variables in 23 hash buckets.
+# average of 0.3 variables per bucket, max 2 in one bucket.
+#  commands to execute (from `Makefile', line 43):
+	$(make-exe)
+	
+
+# Not a target:
+.r.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (built-in):
+	$(COMPILE.r) $< $(OUTPUT_OPTION)
+
+# Not a target:
+.h:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+o-optimize/fqd.o: fqd.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `fqd'
+#  Last modified Sun Dec 31 21:00:48 2000 (978314448)
+#  File has been updated.
+#  Successfully updated.
+# automatic
+# ^ := fqd.c
+# automatic
+# @ := o-optimize/fqd.o
+# automatic
+# + := fqd.c
+# automatic
+# ? := fqd.c
+# automatic
+# * := fqd
+# automatic
+# % := 
+# automatic
+# < := fqd.c
+# 7 variables in 23 hash buckets.
+# average of 0.3 variables per bucket, max 2 in one bucket.
+#  commands to execute (from `/usr/local/rtems//make/compilers/gcc-target-default.cfg', line 170):
+	${COMPILE.c} $(AM_CPPFLAGS) $(AM_CFLAGS) -o $@ $<
+	
+
+# Not a target:
+.C.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (built-in):
+	$(COMPILE.C) $< $(OUTPUT_OPTION)
+
+# Not a target:
+.p:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (built-in):
+	$(LINK.p) $^ $(LOADLIBES) $(LDLIBS) -o $@
+
+# Not a target:
+.l.c:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (built-in):
+	@$(RM) $@ 
+	$(LEX.l) $< > $@
+
+# Not a target:
+/usr/local/rtems//make/custom/default.cfg:
+#  Implicit rule search has been done.
+#  Last modified Tue Dec 12 19:34:15 2000 (976667655)
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+.sh:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (built-in):
+	cat $< >$@ 
+	chmod a+x $@
+
+# Not a target:
+.web:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+/usr/local/rtems//mrm/make/bsp.cfg:
+#  Implicit rule search has been done.
+#  Last modified Tue Dec 12 19:34:20 2000 (976667660)
+#  File has been updated.
+#  Successfully updated.
+
+depend: depend-am
+#  Phony target (dependency of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+
+# Not a target:
+.out:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+.cc:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (built-in):
+	$(LINK.cc) $^ $(LOADLIBES) $(LDLIBS) -o $@
+
+# Not a target:
+.f.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (built-in):
+	$(COMPILE.f) $< $(OUTPUT_OPTION)
+
+# Not a target:
+.texi.info:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (built-in):
+	$(MAKEINFO) $(MAKEINFO_FLAGS) $< -o $@
+
+# Not a target:
+.a:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+.PHONY: all depend install preinstall-recursive optimize debug profile clean-generic distclean-generic distclean distclean-am clean clean-am
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+.tex:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+.cpp.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (built-in):
+	$(COMPILE.cpp) $< $(OUTPUT_OPTION)
+
+# Not a target:
+.l.ln:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (built-in):
+	@$(RM) $*.c
+	$(LEX.l) $< > $*.c
+	$(LINT.c) -i $*.c -o $@
+	$(RM) $*.c
+
+# Not a target:
+/usr/local/rtems//make/main.cfg:
+#  Implicit rule search has been done.
+#  Last modified Tue Dec 12 19:34:15 2000 (976667655)
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+.y:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+.S.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (built-in):
+	$(COMPILE.S) -o $@ $<
+
+# Not a target:
+optimize:
+#  Phony target (dependency of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+
+# Not a target:
+/usr/local/rtems//make/target.cfg:
+#  Implicit rule search has been done.
+#  Last modified Tue Dec 12 19:34:18 2000 (976667658)
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+o-optimize/test.o: test.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `test'
+#  Last modified Sun Dec 31 21:00:48 2000 (978314448)
+#  File has been updated.
+#  Successfully updated.
+# automatic
+# ^ := test.c
+# automatic
+# @ := o-optimize/test.o
+# automatic
+# + := test.c
+# automatic
+# ? := test.c
+# automatic
+# * := test
+# automatic
+# % := 
+# automatic
+# < := test.c
+# 7 variables in 23 hash buckets.
+# average of 0.3 variables per bucket, max 2 in one bucket.
+#  commands to execute (from `/usr/local/rtems//make/compilers/gcc-target-default.cfg', line 170):
+	${COMPILE.c} $(AM_CPPFLAGS) $(AM_CFLAGS) -o $@ $<
+	
+
+# Not a target:
+.tex.dvi:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (built-in):
+	$(TEX) $<
+
+# Not a target:
+.r:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (built-in):
+	$(LINK.r) $^ $(LOADLIBES) $(LDLIBS) -o $@
+
+# Not a target:
+.mod:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (built-in):
+	$(COMPILE.mod) -o $@ -e $@ $^
+
+depend-am:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+preinstall-am:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+.C:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (built-in):
+	$(LINK.C) $^ $(LOADLIBES) $(LDLIBS) -o $@
+
+# Not a target:
+/usr/local/rtems/make/custom/mrm.cfg:
+#  Implicit rule search has been done.
+#  Last modified Tue Dec 12 19:34:19 2000 (976667659)
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+fqd.c:
+#  Implicit rule search has been done.
+#  Last modified Sun Dec 31 20:44:17 2000 (978313457)
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+test.c:
+#  Implicit rule search has been done.
+#  Last modified Sun Dec 31 20:42:35 2000 (978313355)
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+.S:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (built-in):
+	$(LINK.S) $^ $(LOADLIBES) $(LDLIBS) -o $@
+
+# Not a target:
+.texinfo:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+/usr/local/rtems//make/host.cfg:
+#  Implicit rule search has been done.
+#  Last modified Tue Dec 12 19:34:20 2000 (976667660)
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+.w.c:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (built-in):
+	$(CTANGLE) $< - $@
+
+# Not a target:
+.cpp:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (built-in):
+	$(LINK.cpp) $^ $(LOADLIBES) $(LDLIBS) -o $@
+
+# Not a target:
+install:
+#  Phony target (dependency of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+
+# Not a target:
+o-optimize/tpu.o: tpu.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `tpu'
+#  Last modified Sun Dec 31 21:00:48 2000 (978314448)
+#  File has been updated.
+#  Successfully updated.
+# automatic
+# ^ := tpu.c
+# automatic
+# @ := o-optimize/tpu.o
+# automatic
+# + := tpu.c
+# automatic
+# ? := tpu.c
+# automatic
+# * := tpu
+# automatic
+# % := 
+# automatic
+# < := tpu.c
+# 7 variables in 23 hash buckets.
+# average of 0.3 variables per bucket, max 2 in one bucket.
+#  commands to execute (from `/usr/local/rtems//make/compilers/gcc-target-default.cfg', line 170):
+	${COMPILE.c} $(AM_CPPFLAGS) $(AM_CFLAGS) -o $@ $<
+	
+
+# 102 files in 1007 hash buckets.
+# average 0.101 files per bucket, max 2 files in one bucket.
+
+# VPATH Search Paths
+
+# No `vpath' search paths.
+
+# No general (`VPATH' variable) search path.
+
+# Finished Make data base on Sun Dec 31 21:01:01 2000
+

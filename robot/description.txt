@@ -1,0 +1,268 @@
+Fire Marshal Bill
+
+Fire Marshal Bill is my attempt to make a balancing robot that can
+compete in the Trinity College Home Fire-Fighting Contest
+(http://www.trincoll.edu/events/robot).  Unfortunately, it failed to
+wualify for the contest because it was not reliable enough on the day
+of the qualification runs.  However it did win 1st place in the
+'Spirit of an Inventor' award and won 'Most Unique Drive System'.
+
+Two other robots described on the web that inspired me to design a
+balancing robot are:
+
+David Anderson's nBot: http://www.geology.smu.edu/~dpa-www/robo/nbot/
+
+Larry Barello's GyroBot: http://www.barello.net/Robots/Gyrobot/
+
+Other sites that have useful information for building balancing robots:
+
+http://autopilot.sourceforge.com - Open source project to build a
+control system for an autonomous R/C helicopter.  tilt.c and tilt.h in
+their source tree is a kalman filter that would be useful in a
+balancing robot.
+
+http://www.rotomotion.com - Company started by some of the folks doing
+the autopilot project, their 1-D IMU would be good for a balancing
+robot.
+
+
+I used the drivetrain (motors, encoders, and acrylic shaft adapter
+design) described by Alex Brown in this page on Snuffy the Shamfire
+Slayer: http://abrobotics.tripod.com/Snuffy/snuffy.htm
+
+
+Basic specs:
+
+CPU: 68332 (using an MRM332 board - see http://www.robominds.com)
+OS: RTEMS (http://www.rtems.com)
+
+Sensors:
+
+	1 Tokin CG-16D Piezoelectric Gyroscope
+	1 ADXL202 Accelerometer
+	1 Hamamatsu UVTRON (and driver board)
+	16 IR photo transistors (via 2 mcp3208 8-bit SPI AtoD converters)
+	5 Sharp GP2D02 digital distance sensors
+	2 Clarostat 600EN-128-CBL optical encoders
+	1 MIC & amplifier
+
+Actuators:
+	2 Hsaing Neng HN GH12 16341 gearmotors
+	1 20-turn R/C car motor (for fan)
+	1 standard R/C servo (for canister that covers UVTRON)
+	1 LCD display (from Robominds)
+
+Interfaces:
+	Custom motor driver board using 2 LMD 18200 H-Bridges
+	Futaba R/C Car speed controller (for R/C car motor & fan)
+
+Source code overview:
+
+init.c
+	startup code and simple command-line interface.
+	demo() runs the high-level control code for the robot.
+
+fqd.c / fqd.h
+	Code to control a pair of TPU channels to do quadrature decode.
+	(Used to read the 2 motor encoders)
+
+tpu.c / tpu.h
+	General code to configure/control the TPU.
+
+mcpwm.c / mcpwm.h
+	Code to control 3 TPU channels to generate 2 PWM signals
+	(Used to control the two main drive motors)
+
+lcd.c / lcd.h
+	Code to write to the LCD display.
+
+motor.c / motor.h
+	Contains the mid-level motor control code: all the
+	PID loops as well as the motion control code.  More
+	details below.
+
+servo.c / servo.h
+	Code to control TPU channels to generate R/C servo
+	signals.
+
+distance.c / distance.h
+	Code to read GP2D02 distance sensors.  Starts a task
+	that reads the sensors as fast as possible, and stores
+	the readings in global variables.  Also provides an
+	interface for other tasks to read the most recent
+	sensor values.
+
+spi.c / spi.h
+	Contains basic SPI interface code.  Used to interface to
+	the AtoD converters in the two IR arrays.
+
+robot.c
+	Contains high-level robot control code.  More details
+	below.
+
+flame.c / flame.h
+	Code to use a TPU channel to read the output from the
+	UVTRON driver board.  Sets the TPU channel into PTA mode
+	to count pulses, and every 100ms it rolls it into an
+	array of the last 10 counts.  Also provides an interface
+	to read the most recent count, which just sums up the
+	10 entries in the array.
+
+mcp3208.c / mcp3208.h
+	Code to interface with a mcp3208 AtoD converter.  Used to
+	for the 2 IR arrays.
+
+gyro.c / gyro.h
+	Basic code to read the gyro sensor.
+
+pta.c / pta.h
+	Code to configure a TPU channel in PTA mode.  Used to
+	read the accelerometer, as well as to listen for the
+	beep to start the robot.
+
+accel.c / accel.h
+	Code to read the accelerometer.
+
+kalman.c / kalman.h
+	Kalman filter code - used to combine the readings
+	from the gyro and accelerometer to get the current
+	tilt of the robot.  The original version of this code
+	is in imu/imu-1d.c
+
+f16_16.c / f16_16.h
+	Fixed-point operations with 16 bits of integer and 16 bits
+	of fraction precision.
+
+fastint.c / fastint.h
+	Fast trig routines.  Downloaded off the internet from somewhere,
+	and tweaked by me.
+
+robot_trace.c / robot_trace.h / trace.h
+	A ring buffer trace utility.
+
+tone.c / tone.h
+	Code to listen for a tone to start the robot (or the backup
+	button).
+
+
+
+Detailed explanation of motor control:
+
+There's two main concepts used in balancing and controlling the
+movement of the robot: PID control loops and kalman filters.
+
+PID:
+
+My favorite explanation of PID control loops is Larry Barello's
+description here:
+
+http://www.barello.net/Papers/Motion_Control/index.htm
+
+Kalman filters:
+
+Kalman filters are a tricky concept that I don't totally understand
+yet.  The basic idea is to dynamically combine the readings from two
+different sensors with different characteristics to get a more correct
+estimate.  The filter essentially estimates the new value from the
+other sensors and the previous estimate, compares it with the sensor
+reading, and adds some fraction of the reading to the estimate to get
+the latest reading.  It does this for each sensor every iteration.
+The tricky part is how it calculates how much of a correction from the
+reading to apply to the estimate.
+
+I use this technique to combine the output from a gyro sensor and an
+accelerometer to measure the tilt of the platform.  The full technique
+combines all the sensors in one big matrix and is commonly used in
+UAV's, satellite control, and missile guidance.  This site is a good
+reference on kalman filters:
+
+http://www.cs.unc.edu/~welch/kalman/
+
+Also, kalman filters are used in the autopilot.sourceforge.net
+project, and they have source code for some simple and complex kalman
+filters.
+
+
+In my robot, I have 1 single-degree kalman filter to measure the tilt
+of the robot, and 3 PID control loops.  These are integrated like
+this:
+
+ position:  input: desired_pos (from motion control),
+		   current_pos (from encoders)
+	   output: desired_tilt
+	     rate: 10 Hz
+
+ balancing: input: desired_tilt (from position PID loop),
+		   current_tilt (from kalman filter)
+	   output: pwm0
+	     rate: 250 Hz
+
+ heading:   input: desired_heading (from motion control),
+		   current_heading (from encoders)
+	   output: pwm1
+	     rate: 250 Hz
+
+ pwm0 + pwm1 -> left motor PWM
+ pwm0 - pwm1 -> right motor PWM
+
+
+Detailed explanation of high-level robot control:
+
+My high-level robot control is very simple.  It's basically 'drive
+forward until you see a wall, turn left, drive forward until you see a
+wall', etc.  Somewhere in the sequence, when it gets into a room, it
+checks for the candle.  The high-level code is in the function
+'run_maze' in robot.c.  It uses 4 intermediate functions to do it's
+work:
+
+ drive_straight()
+
+  The drive_straight() routine is responsible for driving the robot
+  straight down the center of a hallway, and stopping at the right
+  time.  The stop condition is one of the arguments, and is a
+  combination of distance travelled and one of the following
+  conditions: wall in front, wall on left, wall on right, no wall on
+  left, no wall on right, no wall on left or right.  A wall in front
+  will always cause the drive_straight() routine to exit.
+
+ set_front_dist()
+
+  The set_front_dist() routine is responsible for fixing the robot's
+  position a certain distance from the wall in front of it, so that it
+  will be properly positioned when it turns 90 degrees and goes down
+  that hallway.
+
+ robot_turn_to()
+
+  The robot_turn_to() routine is responsible for turning the robot to
+  a prticular heading.
+
+ put_out_fire()
+
+  This routine is responsible for hunting down the candle and putting
+  it out.  First, it lowers a cover over the UV sensor and spins the
+  robot 360 degrees.  Periodically it reads the UV and IR sensors, and
+  remembers the heading where it had the best reading for the candle.
+  Once done spinning, it turns to that heading and approaches the
+  candle.  The IR sensor arrays can calculate the distance to the
+  candle, and once it gets close enough it stops the robot and runs
+  the main fan to blow out the candle.
+
+  There's some heuristics I put into this routine to make it more
+  reliable:
+
+    It will adjust it's heading to the candle if it gets too far off.
+
+    If it doesn't sense the candle after a number of iterations of the
+    monitoring loop while approaching the candle, it will jump back to
+    the top and start over with the 360 degree scan.
+
+    If it is getting too close to a wall, it turns 90 degrees away
+    from the wall, moves 6 inches, then turns back towards the candle
+    and continues.
+
+    To avoid trying to put out a reflection of the candle, if the IR
+    arrays report the candle position further than 3 inches beyond
+    what the front distance sensor reads, it backs up 6 inches and
+    rescans.
+

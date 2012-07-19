@@ -1,0 +1,112 @@
+#!/bin/sh
+
+flashbase=524288
+flashtop=1048576
+ramimgbase=65536
+
+prog=`basename $0`
+bindir=`dirname $0`
+flashtool=$bindir/flashtool
+mrmgdbinit=$bindir/mrmgdbinit
+
+#
+# Shell script to update the flash in an MRM board using Matt Cross's
+# 'flashtool'.  It makes a copy of the image that is configured to load
+# into RAM, loads that and the flashtool into RAM, and runs the flashtool.
+#
+
+if [ $# != 1 ]
+then
+	echo Usage: $prog "<filename>"
+	exit 1
+fi
+
+if [ ! -e $1 ]
+then
+	echo $prog: $1 does not exist!
+	exit 1
+fi
+
+#if [ ! -e $flashtool ]
+#then
+#	echo "$prog: $flashtool does not exist!  Check that you installed $prog correctly"
+#	exit 1
+#fi
+
+#if [ ! -e $mrmgdbinit ]
+#then
+#	echo "$prog: $mrmgdbinit does not exist!  Check that you installed $prog correctly"
+#	exit 1
+#fi
+
+#
+# First, calculate original starting address and size of image.
+#
+
+echo `m68k-rtems-objdump --section-headers $1 | \
+	  awk 'function h2d(x) { x=toupper(x); digits=length(x); s=0 ; \
+	       for (p=digits; p>0; p--) \
+	       s += (16^(p-1)) * ( index("0123456789ABCDEF",\
+	        substr(x,1+digits-p,1)) -1 );\
+	        return s } ;\
+		/\.sec1/ { base = \$4 ; size = \$3 };\
+	        END { printf("base=0x%x size=0x%x", h2d(base), h2d(size)) }'`
+exit 1
+
+if [ ! $?base -o ! $?size ]
+then
+	echo $prog: $1 not in valid format, must be s-record format.
+	exit 1
+fi
+
+if [  $base = 0x0 -o $size = 0x0 ]
+then
+	echo $prog: $1 not in valid format, must be s-record format.
+	exit 1
+fi
+
+# echo base=$base, size=$size
+
+base=$[$base]
+size=$[$size]
+
+# echo base=$base, size=$size
+
+if [ $base -lt $flashbase -o $[$base+$size] -gt $flashtop ]
+then
+	echo "$prog: $1 load address is not in flash (or too big for flash)!"
+	exit 1
+fi
+
+offset=$[$base-$ramimgbase]
+tmpfile=ramtmp.$$
+
+m68k-rtems-objcopy --adjust-vma=-$offset $1 $tmpfile
+
+if [ $? != 0 ]
+then
+	echo "$prog: objcopy failed!"
+	exit 1
+fi
+
+# echo tmpfile=$tmpfile
+
+gdbfile=gdbfile.$$
+
+echo source $mrmgdbinit > $gdbfile
+echo load >> $gdbfile
+echo load $tmpfile >> $gdbfile
+echo "set *(unsigned long *)0x3010 = $ramimgbase" >> $gdbfile
+echo "set *(unsigned long *)0x3014 = $base" >> $gdbfile
+echo "set *(unsigned long *)0x3018 = $size" >> $gdbfile
+echo "set \$pc = 0x3000" >> $gdbfile
+echo "break flashtool_done" >> $gdbfile
+echo "c" >> $gdbfile
+
+# echo gdbfile=$gdbfile
+
+echo "Loading image into flash & starting flash utility."
+
+m68k-bdm-elf-gdb flashtool -q -batch -x $gdbfile
+
+rm -f $tmpfile $gdbfile

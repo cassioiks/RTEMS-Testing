@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?fileVersion 4.0.0?>
+
+<cproject storage_type_id="org.eclipse.cdt.core.XmlProjectDescriptionStorage">
+	<storageModule moduleId="org.eclipse.cdt.core.settings">
+		<cconfiguration id="org.rtems.cdt.config.900862315">
+			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="org.rtems.cdt.config.900862315" moduleId="org.eclipse.cdt.core.settings" name="RTEMS Executable Configuration">
+				<externalSettings/>
+				<extensions>
+					<extension id="org.eclipse.cdt.core.ELF" point="org.eclipse.cdt.core.BinaryParser"/>
+					<extension id="org.eclipse.cdt.core.GmakeErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.CWDLocator" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GCCErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GASErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GLDErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+				</extensions>
+			</storageModule>
+			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+				<configuration artifactName="${ProjName}" buildArtefactType="org.eclipse.cdt.build.core.buildArtefactType.exe" buildProperties="org.eclipse.cdt.build.core.buildArtefactType=org.eclipse.cdt.build.core.buildArtefactType.exe" description="" id="org.rtems.cdt.config.900862315" name="RTEMS Executable Configuration" parent="org.rtems.cdt.config">
+					<folderInfo id="org.rtems.cdt.config.900862315." name="/" resourcePath="">
+						<toolChain id="org.rtems.cdt.config.toolchain.1267689233" name="RTEMS Toolchain" superClass="org.rtems.cdt.config.toolchain">
+							<targetPlatform archList="all" binaryParser="org.eclipse.cdt.core.ELF" id="org.rtems.cdt.target.990176598" name="RTEMS Target" osList="all" superClass="org.rtems.cdt.target"/>
+							<builder buildPath="${workspace_loc:/Test_Semaphore2/RTEMS Executable Configuration}" id="org.rtems.cdt.builder.1874194647" managedBuildOn="true" name="Gnu Make Builder.RTEMS Executable Configuration" superClass="org.rtems.cdt.builder"/>
+							<tool id="org.rtems.cdt.compiler.c.796831294" name="RTEMS C Compiler" superClass="org.rtems.cdt.compiler.c"/>
+							<tool id="org.rtems.cdt.compiler.cpp.577240898" name="RTEMS C++ Compiler" superClass="org.rtems.cdt.compiler.cpp"/>
+							<tool id="org.rtems.cdt.linker.c.782932280" name="RTEMS Linker" superClass="org.rtems.cdt.linker.c"/>
+							<tool id="org.rtems.cdt.assembler.gcc.115828676" name="RTEMS Assembler" superClass="org.rtems.cdt.assembler.gcc"/>
+							<tool id="org.rtems.cdt.assembler.662980027" name="RTEMS Bare Assembler" superClass="org.rtems.cdt.assembler"/>
+							<tool id="org.rtems.cdt.archiver.2045857416" name="RTEMS Archiver" superClass="org.rtems.cdt.archiver"/>
+							<tool id="org.rtems.cdt.linker.cpp.1937119445" name="RTEMS C++ Linker" superClass="org.rtems.cdt.linker.cpp"/>
+						</toolChain>
+					</folderInfo>
+				</configuration>
+			</storageModule>
+			<storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
+		</cconfiguration>
+	</storageModule>
+	<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+		<project id="Test_Semaphore2.org.rtems.cdt.projectType.2142252512" name="RTEMS Executable" projectType="org.rtems.cdt.projectType"/>
+	</storageModule>
+	<storageModule moduleId="scannerConfiguration">
+		<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+	</storageModule>
+</cproject>

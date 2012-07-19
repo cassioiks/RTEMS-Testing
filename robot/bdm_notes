@@ -1,0 +1,15 @@
+m68k-bdm-elf-gdb
+(patched & using driver from gdb-4.18-bdm-patches-pi1)
+
+file <blah>
+target bdm /dev/bdm
+bdm_setdelay 8
+bdm_reset
+c
+<wait for cpu32bug prompt>
+ctrl-c
+load
+b Init
+c
+<type 'go 300c' at cpu32bug prompt>
+

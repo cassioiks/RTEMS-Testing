@@ -1,0 +1,273 @@
+Setting Debug to 1
+GDB: bdm_create_inferior: execfile /home/profesor/rtems/tools/robot1/o-optimize/test.nxe args=, env=USERNAME=
+GDB: bdm_clear_breakpoints
+bdmlib_load: program name /home/profesor/rtems/tools/robot1/o-optimize/test.nxe
+	DFC 5000000 SFC 5000000
+bdmlib_do_load_macro /home/profesor/rtems/tools/robot1/o-optimize/test.nxe suffix 1
+	no macro file found
+bdmlib_load_section:
+	section ram index 0
+	flags 0x200 raw_size 0 cooked_size 0
+	vma 0x3000 lma 0x3000 output_offset 0
+bdmlib_load_section:
+	section .text index 1
+	flags 0x223 raw_size 76608 cooked_size 76608
+	vma 0x3000 lma 0x3000 output_offset 0
+bdmlib_write_block size 0x200 to adr 0x3000 bdmlib_write_mem: addr 0x3000 cont 0x2f0abeef
+bdmlib_write_block size 0x200 to adr 0x3200 bdmlib_write_mem: addr 0x3200 cont 0x2f034eb9
+bdmlib_write_block size 0x200 to adr 0x3400 bdmlib_write_mem: addr 0x3400 cont 0x144b6
+bdmlib_write_block size 0x200 to adr 0x3600 bdmlib_write_mem: addr 0x3600 cont 0x4e944878
+bdmlib_write_block size 0x200 to adr 0x3800 bdmlib_write_mem: addr 0x3800 cont 0x2f034879
+bdmlib_write_block size 0x200 to adr 0x3a00 bdmlib_write_mem: addr 0x3a00 cont 0x7003b082
+bdmlib_write_block size 0x200 to adr 0x3c00 bdmlib_write_mem: addr 0x3c00 cont 0x48790001
+bdmlib_write_block size 0x200 to adr 0x3e00 bdmlib_write_mem: addr 0x3e00 cont 0x3038fe1e
+bdmlib_write_block size 0x200 to adr 0x4000 bdmlib_write_mem: addr 0x4000 cont 0x18200b
+bdmlib_write_block size 0x200 to adr 0x4200 bdmlib_write_mem: addr 0x4200 cont 0x6f0ed0a8
+bdmlib_write_block size 0x200 to adr 0x4400 bdmlib_write_mem: addr 0x4400 cont 0x707f6012
+bdmlib_write_block size 0x200 to adr 0x4600 bdmlib_write_mem: addr 0x4600 cont 0xfff84878
+bdmlib_write_block size 0x200 to adr 0x4800 bdmlib_write_mem: addr 0x4800 cont 0x91d12008
+bdmlib_write_block size 0x200 to adr 0x4a00 bdmlib_write_mem: addr 0x4a00 cont 0x93819081
+bdmlib_write_block size 0x200 to adr 0x4c00 bdmlib_write_mem: addr 0x4c00 cont 0x202f0020
+bdmlib_write_block size 0x200 to adr 0x4e00 bdmlib_write_mem: addr 0x4e00 cont 0xb3c86602
+bdmlib_write_block size 0x200 to adr 0x5000 bdmlib_write_mem: addr 0x5000 cont 0x167f0
+bdmlib_write_block size 0x200 to adr 0x5200 bdmlib_write_mem: addr 0x5200 cont 0x16294
+bdmlib_write_block size 0x200 to adr 0x5400 bdmlib_write_mem: addr 0x5400 cont 0x1c00b60b
+bdmlib_write_block size 0x200 to adr 0x5600 bdmlib_write_mem: addr 0x5600 cont 0x3038fe18
+bdmlib_write_block size 0x200 to adr 0x5800 bdmlib_write_mem: addr 0x5800 cont 0x4e554e96
+bdmlib_write_block size 0x200 to adr 0x5a00 bdmlib_write_mem: addr 0x5a00 cont 0x508f588f
+bdmlib_write_block size 0x200 to adr 0x5c00 bdmlib_write_mem: addr 0x5c00 cont 0x6aa87016
+bdmlib_write_block size 0x200 to adr 0x5e00 bdmlib_write_mem: addr 0x5e00 cont 0x6ef42400
+bdmlib_write_block size 0x200 to adr 0x6000 bdmlib_write_mem: addr 0x6000 cont 0x48790000
+bdmlib_write_block size 0x200 to adr 0x6200 bdmlib_write_mem: addr 0x6200 cont 0x4601c081
+bdmlib_write_block size 0x200 to adr 0x6400 bdmlib_write_mem: addr 0x6400 cont 0x42804e75
+bdmlib_write_block size 0x200 to adr 0x6600 bdmlib_write_mem: addr 0x6600 cont 0x4602c282
+bdmlib_write_block size 0x200 to adr 0x6800 bdmlib_write_mem: addr 0x6800 cont 0x74a04a88
+bdmlib_write_block size 0x200 to adr 0x6a00 bdmlib_write_mem: addr 0x6a00 cont 0x78ec4eb9
+bdmlib_write_block size 0x200 to adr 0x6c00 bdmlib_write_mem: addr 0x6c00 cont 0x246f0008
+bdmlib_write_block size 0x200 to adr 0x6e00 bdmlib_write_mem: addr 0x6e00 cont 0x2f0a206f
+bdmlib_write_block size 0x200 to adr 0x7000 bdmlib_write_mem: addr 0x7000 cont 0x17fd2
+bdmlib_write_block size 0x200 to adr 0x7200 bdmlib_write_mem: addr 0x7200 cont 0x10b9ef
+bdmlib_write_block size 0x200 to adr 0x7400 bdmlib_write_mem: addr 0x7400 cont 0x4eb90000
+bdmlib_write_block size 0x200 to adr 0x7600 bdmlib_write_mem: addr 0x7600 cont 0x174cc
+bdmlib_write_block size 0x200 to adr 0x7800 bdmlib_write_mem: addr 0x7800 cont 0x204e75
+bdmlib_write_block size 0x200 to adr 0x7a00 bdmlib_write_mem: addr 0x7a00 cont 0x179b4
+bdmlib_write_block size 0x200 to adr 0x7c00 bdmlib_write_mem: addr 0x7c00 cont 0xfff87210
+bdmlib_write_block size 0x200 to adr 0x7e00 bdmlib_write_mem: addr 0x7e00 cont 0x23c00001
+bdmlib_write_block size 0x200 to adr 0x8000 bdmlib_write_mem: addr 0x8000 cont 0x4e5e4e75
+bdmlib_write_block size 0x200 to adr 0x8200 bdmlib_write_mem: addr 0x8200 cont 0x49c12f01
+bdmlib_write_block size 0x200 to adr 0x8400 bdmlib_write_mem: addr 0x8400 cont 0x7bd22839
+bdmlib_write_block size 0x200 to adr 0x8600 bdmlib_write_mem: addr 0x8600 cont 0x60442001
+bdmlib_write_block size 0x200 to adr 0x8800 bdmlib_write_mem: addr 0x8800 cont 0x42a74878
+bdmlib_write_block size 0x200 to adr 0x8a00 bdmlib_write_mem: addr 0x8a00 cont 0x23c00001
+bdmlib_write_block size 0x200 to adr 0x8c00 bdmlib_write_mem: addr 0x8c00 cont 0x48780001
+bdmlib_write_block size 0x200 to adr 0x8e00 bdmlib_write_mem: addr 0x8e00 cont 0x504f4e75
+bdmlib_write_block size 0x200 to adr 0x9000 bdmlib_write_mem: addr 0x9000 cont 0x702544
+bdmlib_write_block size 0x200 to adr 0x9200 bdmlib_write_mem: addr 0x9200 cont 0x281
+bdmlib_write_block size 0x200 to adr 0x9400 bdmlib_write_mem: addr 0x9400 cont 0x7c0700
+bdmlib_write_block size 0x200 to adr 0x9600 bdmlib_write_mem: addr 0x9600 cont 0x42804e75
+bdmlib_write_block size 0x200 to adr 0x9800 bdmlib_write_mem: addr 0x9800 cont 0x47f90000
+bdmlib_write_block size 0x200 to adr 0x9a00 bdmlib_write_mem: addr 0x9a00 cont 0x24eb9
+bdmlib_write_block size 0x200 to adr 0x9c00 bdmlib_write_mem: addr 0x9c00 cont 0x42451
+bdmlib_write_block size 0x200 to adr 0x9e00 bdmlib_write_mem: addr 0x9e00 cont 0xb4806420
+bdmlib_write_block size 0x200 to adr 0xa000 bdmlib_write_mem: addr 0xa000 cont 0xc044e75
+bdmlib_write_block size 0x200 to adr 0xa200 bdmlib_write_mem: addr 0xa200 cont 0x86706
+bdmlib_write_block size 0x200 to adr 0xa400 bdmlib_write_mem: addr 0xa400 cont 0x20680010
+bdmlib_write_block size 0x200 to adr 0xa600 bdmlib_write_mem: addr 0xa600 cont 0x21690008
+bdmlib_write_block size 0x200 to adr 0xa800 bdmlib_write_mem: addr 0xa800 cont 0x70ff6028
+bdmlib_write_block size 0x200 to adr 0xaa00 bdmlib_write_mem: addr 0xaa00 cont 0x2d690014
+bdmlib_write_block size 0x200 to adr 0xac00 bdmlib_write_mem: addr 0xac00 cont 0x20eeffd2
+bdmlib_write_block size 0x200 to adr 0xae00 bdmlib_write_mem: addr 0xae00 cont 0x6600fec8
+bdmlib_write_block size 0x200 to adr 0xb000 bdmlib_write_mem: addr 0xb000 cont 0x4cdf0c0c
+bdmlib_write_block size 0x200 to adr 0xb200 bdmlib_write_mem: addr 0xb200 cont 0x482579
+bdmlib_write_block size 0x200 to adr 0xb400 bdmlib_write_mem: addr 0xb400 cont 0x35690036
+bdmlib_write_block size 0x200 to adr 0xb600 bdmlib_write_mem: addr 0xb600 cont 0x67047008
+bdmlib_write_block size 0x200 to adr 0xb800 bdmlib_write_mem: addr 0xb800 cont 0x242f000c
+bdmlib_write_block size 0x200 to adr 0xba00 bdmlib_write_mem: addr 0xba00 cont 0x508f4a80
+bdmlib_write_block size 0x200 to adr 0xbc00 bdmlib_write_mem: addr 0xbc00 cont 0x1842aa
+bdmlib_write_block size 0x200 to adr 0xbe00 bdmlib_write_mem: addr 0xbe00 cont 0x4a8c660c
+bdmlib_write_block size 0x200 to adr 0xc000 bdmlib_write_mem: addr 0xc000 cont 0x206f0008
+bdmlib_write_block size 0x200 to adr 0xc200 bdmlib_write_mem: addr 0xc200 cont 0xc054
+bdmlib_write_block size 0x200 to adr 0xc400 bdmlib_write_mem: addr 0xc400 cont 0x671c6208
+bdmlib_write_block size 0x200 to adr 0xc600 bdmlib_write_mem: addr 0xc600 cont 0x538023c0
+bdmlib_write_block size 0x200 to adr 0xc800 bdmlib_write_mem: addr 0xc800 cont 0x17494
+bdmlib_write_block size 0x200 to adr 0xca00 bdmlib_write_mem: addr 0xca00 cont 0x234a0004
+bdmlib_write_block size 0x200 to adr 0xcc00 bdmlib_write_mem: addr 0xcc00 cont 0x60224281
+bdmlib_write_block size 0x200 to adr 0xce00 bdmlib_write_mem: addr 0xce00 cont 0x42a80008
+bdmlib_write_block size 0x200 to adr 0xd000 bdmlib_write_mem: addr 0xd000 cont 0x67106032
+bdmlib_write_block size 0x200 to adr 0xd200 bdmlib_write_mem: addr 0xd200 cont 0x45f90000
+bdmlib_write_block size 0x200 to adr 0xd400 bdmlib_write_mem: addr 0xd400 cont 0x660623d3
+bdmlib_write_block size 0x200 to adr 0xd600 bdmlib_write_mem: addr 0xd600 cont 0x67264879
+bdmlib_write_block size 0x200 to adr 0xd800 bdmlib_write_mem: addr 0xd800 cont 0x2003c086
+bdmlib_write_block size 0x200 to adr 0xda00 bdmlib_write_mem: addr 0xda00 cont 0x2f004eb9
+bdmlib_write_block size 0x200 to adr 0xdc00 bdmlib_write_mem: addr 0xdc00 cont 0x206efff8
+bdmlib_write_block size 0x200 to adr 0xde00 bdmlib_write_mem: addr 0xde00 cont 0x2a064efb
+bdmlib_write_block size 0x200 to adr 0xe000 bdmlib_write_mem: addr 0xe000 cont 0x20790001
+bdmlib_write_block size 0x200 to adr 0xe200 bdmlib_write_mem: addr 0xe200 cont 0x948495aa
+bdmlib_write_block size 0x200 to adr 0xe400 bdmlib_write_mem: addr 0xe400 cont 0x68024eb9
+bdmlib_write_block size 0x200 to adr 0xe600 bdmlib_write_mem: addr 0xe600 cont 0x486e0010
+bdmlib_write_block size 0x200 to adr 0xe800 bdmlib_write_mem: addr 0xe800 cont 0x42aa0008
+bdmlib_write_block size 0x200 to adr 0xea00 bdmlib_write_mem: addr 0xea00 cont 0xc600a
+bdmlib_write_block size 0x200 to adr 0xec00 bdmlib_write_mem: addr 0xec00 cont 0x705ad0b9
+bdmlib_write_block size 0x200 to adr 0xee00 bdmlib_write_mem: addr 0xee00 cont 0x246e0008
+bdmlib_write_block size 0x200 to adr 0xf000 bdmlib_write_mem: addr 0xf000 cont 0x3a200c4
+bdmlib_write_block size 0x200 to adr 0xf200 bdmlib_write_mem: addr 0xf200 cont 0x42806000
+bdmlib_write_block size 0x200 to adr 0xf400 bdmlib_write_mem: addr 0xf400 cont 0xfff82040
+bdmlib_write_block size 0x200 to adr 0xf600 bdmlib_write_mem: addr 0xf600 cont 0xfff42f2e
+bdmlib_write_block size 0x200 to adr 0xf800 bdmlib_write_mem: addr 0xf800 cont 0x6ffb5
+bdmlib_write_block size 0x200 to adr 0xfa00 bdmlib_write_mem: addr 0xfa00 cont 0x18205de
+bdmlib_write_block size 0x200 to adr 0xfc00 bdmlib_write_mem: addr 0xfc00 cont 0x221c2d40
+bdmlib_write_block size 0x200 to adr 0xfe00 bdmlib_write_mem: addr 0xfe00 cont 0x2f0c2d49
+bdmlib_write_block size 0x200 to adr 0x10000 bdmlib_write_mem: addr 0x10000 cont 0x2f2e000c
+bdmlib_write_block size 0x200 to adr 0x10200 bdmlib_write_mem: addr 0x10200 cont 0x8060008
+bdmlib_write_block size 0x200 to adr 0x10400 bdmlib_write_mem: addr 0x10400 cont 0xf34c508f
+bdmlib_write_block size 0x200 to adr 0x10600 bdmlib_write_mem: addr 0x10600 cont 0x52892d49
+bdmlib_write_block size 0x200 to adr 0x10800 bdmlib_write_mem: addr 0x10800 cont 0x4220a
+bdmlib_write_block size 0x200 to adr 0x10a00 bdmlib_write_mem: addr 0x10a00 cont 0x300602
+bdmlib_write_block size 0x200 to adr 0x10c00 bdmlib_write_mem: addr 0x10c00 cont 0x20024240
+bdmlib_write_block size 0x200 to adr 0x10e00 bdmlib_write_mem: addr 0x10e00 cont 0xd08d222e
+bdmlib_write_block size 0x200 to adr 0x11000 bdmlib_write_mem: addr 0x11000 cont 0x2d42ffec
+bdmlib_write_block size 0x200 to adr 0x11200 bdmlib_write_mem: addr 0x11200 cont 0x4aaeffe4
+bdmlib_write_block size 0x200 to adr 0x11400 bdmlib_write_mem: addr 0x11400 cont 0xffec2f30
+bdmlib_write_block size 0x200 to adr 0x11600 bdmlib_write_mem: addr 0x11600 cont 0xffec6600
+bdmlib_write_block size 0x200 to adr 0x11800 bdmlib_write_mem: addr 0x11800 cont 0x2840508f
+bdmlib_write_block size 0x200 to adr 0x11a00 bdmlib_write_mem: addr 0x11a00 cont 0x7928
+bdmlib_write_block size 0x200 to adr 0x11c00 bdmlib_write_mem: addr 0x11c00 cont 0xffa852ae
+bdmlib_write_block size 0x200 to adr 0x11e00 bdmlib_write_mem: addr 0x11e00 cont 0xd5922f0a
+bdmlib_write_block size 0x200 to adr 0x12000 bdmlib_write_mem: addr 0x12000 cont 0xe6d1c
+bdmlib_write_block size 0x200 to adr 0x12200 bdmlib_write_mem: addr 0x12200 cont 0x48780001
+bdmlib_write_block size 0x200 to adr 0x12400 bdmlib_write_mem: addr 0x12400 cont 0x280f000
+bdmlib_write_block size 0x200 to adr 0x12600 bdmlib_write_mem: addr 0x12600 cont 0x25888
+bdmlib_write_block size 0x200 to adr 0x12800 bdmlib_write_mem: addr 0x12800 cont 0x245f4e5e
+bdmlib_write_block size 0x200 to adr 0x12a00 bdmlib_write_mem: addr 0x12a00 cont 0x24040082
+bdmlib_write_block size 0x200 to adr 0x12c00 bdmlib_write_mem: addr 0x12c00 cont 0x2f024eb9
+bdmlib_write_block size 0x200 to adr 0x12e00 bdmlib_write_mem: addr 0x12e00 cont 0x206c00
+bdmlib_write_block size 0x200 to adr 0x13000 bdmlib_write_mem: addr 0x13000 cont 0x6000ffe6
+bdmlib_write_block size 0x200 to adr 0x13200 bdmlib_write_mem: addr 0x13200 cont 0x4e757801
+bdmlib_write_block size 0x200 to adr 0x13400 bdmlib_write_mem: addr 0x13400 cont 0x53440800
+bdmlib_write_block size 0x200 to adr 0x13600 bdmlib_write_mem: addr 0x13600 cont 0x2830000
+bdmlib_write_block size 0x200 to adr 0x13800 bdmlib_write_mem: addr 0x13800 cont 0xc0840680
+bdmlib_write_block size 0x200 to adr 0x13a00 bdmlib_write_mem: addr 0x13a00 cont 0x6052222e
+bdmlib_write_block size 0x200 to adr 0x13c00 bdmlib_write_mem: addr 0x13c00 cont 0x508f508f
+bdmlib_write_block size 0x200 to adr 0x13e00 bdmlib_write_mem: addr 0x13e00 cont 0x4e92508f
+bdmlib_write_block size 0x200 to adr 0x14000 bdmlib_write_mem: addr 0x14000 cont 0x670c2f0a
+bdmlib_write_block size 0x200 to adr 0x14200 bdmlib_write_mem: addr 0x14200 cont 0x146712
+bdmlib_write_block size 0x200 to adr 0x14400 bdmlib_write_mem: addr 0x14400 cont 0x2f2f0010
+bdmlib_write_block size 0x200 to adr 0x14600 bdmlib_write_mem: addr 0x14600 cont 0x20286465
+bdmlib_write_block size 0x200 to adr 0x14800 bdmlib_write_mem: addr 0x14800 cont 0x2025640a
+bdmlib_write_block size 0x200 to adr 0x14a00 bdmlib_write_mem: addr 0x14a00 cont 0x636f6d70
+bdmlib_write_block size 0x200 to adr 0x14c00 bdmlib_write_mem: addr 0x14c00 cont 0x695f696e
+bdmlib_write_block size 0x200 to adr 0x14e00 bdmlib_write_mem: addr 0x14e00 cont 0x74656d73
+bdmlib_write_block size 0x200 to adr 0x15000 bdmlib_write_mem: addr 0x15000 cont 0x525445
+bdmlib_write_block size 0x200 to adr 0x15200 bdmlib_write_mem: addr 0x15200 cont 0x75732049
+bdmlib_write_block size 0x200 to adr 0x15400 bdmlib_write_mem: addr 0x15400 cont 0x5f676574
+bdmlib_write_block size 0x200 to adr 0x15600 bdmlib_write_mem: addr 0x15600 cont 0
+bdmlib_write_block size 0x200 to adr 0x15800 bdmlib_write_mem: addr 0x15800 cont 0x30303030
+bdmlib_write_block size 0x140 to adr 0x15a00 bdmlib_write_mem: addr 0x15a00 cont 0x2e0043
+bdmlib_load_section:
+	section .data index 2
+	flags 0x243 raw_size 3328 cooked_size 3328
+	vma 0x15b40 lma 0x15b40 output_offset 0
+bdmlib_write_block size 0x200 to adr 0x15b40 bdmlib_write_mem: addr 0x15b40 cont 0x1447c
+bdmlib_write_block size 0x200 to adr 0x15d40 bdmlib_write_mem: addr 0x15d40 cont 0x60005f
+bdmlib_write_block size 0x200 to adr 0x15f40 bdmlib_write_mem: addr 0x15f40 cont 0xffffffff
+bdmlib_write_block size 0x200 to adr 0x16140 bdmlib_write_mem: addr 0x16140 cont 0xc100bb
+bdmlib_write_block size 0x200 to adr 0x16340 bdmlib_write_mem: addr 0x16340 cont 0
+bdmlib_write_block size 0x200 to adr 0x16540 bdmlib_write_mem: addr 0x16540 cont 0
+bdmlib_write_block size 0x100 to adr 0x16740 bdmlib_write_mem: addr 0x16740 cont 0
+bdmlib_load_section:
+	section .bss index 3
+	flags 0x1 raw_size 10944 cooked_size 10944
+	vma 0x16840 lma 0x16840 output_offset 0
+bdmlib_load_section:
+	section .stab index 4
+	flags 0x10210 raw_size 435960 cooked_size 435960
+	vma 0 lma 0 output_offset 0
+bdmlib_load_section:
+	section .comment index 5
+	flags 0x210 raw_size 8996 cooked_size 8996
+	vma 0 lma 0 output_offset 0
+bdmlib_load_section:
+	section .stabstr index 6
+	flags 0x10210 raw_size 246680 cooked_size 246680
+	vma 0 lma 0 output_offset 0
+GDB: bdm_create_inferior:
+GDB: 	set pc to 0x300e and start prg
+GDB: bdm_store_register 17 with value 0x300e
+GDB: bdm_insert_breakpoints at 0x4de6 
+GDB: bdm_xfer_inferior_memory memaddr 0x4de6 len 2 write 0
+bdmlib_read_var size 0 from adr 0x4de6  cont 0x91
+bdmlib_read_var size 0 from adr 0x4de7  cont 0xc891
+GDB: bdm_xfer_inferior_memory memaddr 0x4de6 len 2 write 1
+bdmlib_write_mem: addr 0x4de6 cont 0x4a
+bdmlib_write_mem: addr 0x4de7 cont 0xfffffffa
+GDB: bdm_resume: pid -1 step=0, sig=0
+bdmlib_go
+GDB: bdm_wait: pid -1 
+GDB: bdm_target_stopped ATEMP val 0x1 = (hi 0 lo 0x1)
+GDB: we have re-entered bdm-mode
+GDB: bdm_analyze_exception: val_h = 0 (should be 0x0)
+GDB: 	bkpt found at (pcc) = 0x4de6
+GDB: bdm_fetch_register 17
+GDB: bdm_fetch_register 14
+GDB: bdm_remove_breakpoint at 0x4de6 
+GDB: bdm_xfer_inferior_memory memaddr 0x4de6 len 2 write 1
+bdmlib_write_mem: addr 0x4de6 cont 0xffffff91
+bdmlib_write_mem: addr 0x4de7 cont 0xffffffc8
+GDB: bdm_xfer_inferior_memory memaddr 0x8aec len 4 write 0
+bdmlib_read_var size 0 from adr 0x8aec  cont 0x6f6f742f
+bdmlib_read_var size 0 from adr 0x8aed  cont 0x6f6f392f
+bdmlib_read_var size 0 from adr 0x8aee  cont 0x6f00392f
+bdmlib_read_var size 0 from adr 0x8aef  cont 0x100392f
+GDB: bdm_xfer_inferior_memory memaddr 0x8af0 len 4 write 0
+bdmlib_read_var size 0 from adr 0x8af0  cont 0x1000079
+bdmlib_read_var size 0 from adr 0x8af1  cont 0x100ca79
+bdmlib_read_var size 0 from adr 0x8af2  cont 0x14eca79
+bdmlib_read_var size 0 from adr 0x8af3  cont 0xb94eca79
+GDB: bdm_xfer_inferior_memory memaddr 0x8af4 len 4 write 0
+bdmlib_read_var size 0 from adr 0x8af4  cont 0
+bdmlib_read_var size 0 from adr 0x8af5  cont 0
+bdmlib_read_var size 0 from adr 0x8af6  cont 0x910000
+bdmlib_read_var size 0 from adr 0x8af7  cont 0x64910000
+GDB: bdm_xfer_inferior_memory memaddr 0x9164 len 8 write 0
+bdmlib_read_block size 0x8 from adr 0x9164 bdmlib_read_var size 0x80 from adr 0x9164  cont 0x48e73820
+GDB: bdm_xfer_inferior_memory memaddr 0x8af8 len 4 write 0
+bdmlib_read_var size 0 from adr 0x8af8  cont 0x832ac20
+bdmlib_read_var size 0 from adr 0x8af9  cont 0x8327920
+bdmlib_read_var size 0 from adr 0x8afa  cont 0x8007920
+bdmlib_read_var size 0 from adr 0x8afb  cont 0x1007920
+GDB: bdm_xfer_inferior_memory memaddr 0x20790001 len 8 write 0
+bdmlib_read_block size 0x8 from adr 0x20790001 bdmlib_read_var size 0 from adr 0x20790001 
+error 613 (Unknown error 4294966683)
+GDB: bdm_xfer_inferior_memory memaddr 0x20790001 len 8 write 0
+bdmlib_read_block size 0x8 from adr 0x20790001 bdmlib_read_var size 0 from adr 0x20790001 
+error 613 (Unknown error 4294966683)
+GDB: bdm_xfer_inferior_memory memaddr 0x20790001 len 1 write 0
+bdmlib_read_var size 0 from adr 0x20790001 
+error 613 (Unknown error 4294966683)
+GDB: bdm_xfer_inferior_memory memaddr 0x20790001 len 1 write 0
+bdmlib_read_var size 0 from adr 0x20790001 
+error 613 (Unknown error 4294966683)
+GDB: bdm_xfer_inferior_memory memaddr 0x20790001 len 1 write 0
+bdmlib_read_var size 0 from adr 0x20790001 
+error 613 (Unknown error 4294966683)
+GDB: bdm_xfer_inferior_memory memaddr 0x20790001 len 1 write 0
+bdmlib_read_var size 0 from adr 0x20790001 
+error 613 (Unknown error 4294966683)
+GDB: bdm_xfer_inferior_memory memaddr 0 len 1 write 0
+bdmlib_read_var size 0 from adr 0 
+error 613 (Unknown error 4294966683)
+GDB: bdm_xfer_inferior_memory memaddr 0 len 1 write 0
+bdmlib_read_var size 0 from adr 0 
+error 613 (Unknown error 4294966683)
+GDB: bdm_set_debug_driver_interactive: arg <2> from_tty 1
+GDB: bdm_xfer_inferior_memory memaddr 0 len 1 write 0
+bdmlib_read_var size 0 from adr 0 
+error 613 (Unknown error 4294966683)
+GDB: bdm_xfer_inferior_memory memaddr 0 len 1 write 0
+bdmlib_read_var size 0 from adr 0 
+error 613 (Unknown error 4294966683)
+GDB: bdm_fetch_register 21
+bdmlib_close: quitting 1
+bdmlib_reset ttcu 0
+bdmlib_do_load_macro cpu32init suffix 2
+	no macro file found
