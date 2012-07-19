@@ -1,0 +1,14 @@
+/*
+ * test.cpp
+ *
+ *  Created on: Apr 6, 2012
+ *      Author: root
+ */
+
+#include "test.h"
+
+rtems_task user_application(rtems_task_argument argument){
+	while(1){
+		printf("BBBBBB");
+	}
+}

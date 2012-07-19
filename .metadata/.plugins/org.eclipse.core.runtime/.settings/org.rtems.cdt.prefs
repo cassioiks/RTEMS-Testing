@@ -1,0 +1,3 @@
+eclipse.preferences.version=1
+org.rtems.cdt.basePath=/opt/rtems-4.11
+org.rtems.cdt.bspPath=/opt/rtems-4.11/sparc-rtems4.11/sis

@@ -1,0 +1,12 @@
+
+**** Build of configuration RTEMS Executable Configuration for project robot ****
+
+make all 
+Building file: ../distance.c
+Invoking: RTEMS C Compiler
+/opt/rtems-4.11/bin/sparc-rtems4.11-gcc -B/opt/rtems-4.11/sparc-rtems4.11/sis/lib/ -specs bsp_specs -qrtems -mcpu=cypress -Os -g -Wall -c -fmessage-length=0 -pipe -MMD -MP -MF"distance.d" -MT"distance.d" -o "distance.o" "../distance.c"
+../distance.c:28:17: fatal error: sim.h: No such file or directory
+compilation terminated.
+make: *** [distance.o] Error 1
+
+**** Build Finished ****

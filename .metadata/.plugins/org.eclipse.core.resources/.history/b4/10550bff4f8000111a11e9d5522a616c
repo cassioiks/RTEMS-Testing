@@ -1,0 +1,14 @@
+/*
+ * Test.cpp
+ *
+ *  Created on: Apr 6, 2012
+ *      Author: root
+ */
+#include "Test.h"
+#include <stdlib.h>
+
+rtems_task check_file(rtems_task_argument argument){
+	while(1){
+		printf("BBBBBBBB");
+	}
+}

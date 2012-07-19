@@ -1,0 +1,14 @@
+/*
+ * test.h
+ *
+ *  Created on: Apr 7, 2012
+ *      Author: root
+ */
+
+#ifndef TEST_H_
+#define TEST_H_
+rtems_task header(rtems_task_argument argument);
+
+
+
+#endif /* TEST_H_ */

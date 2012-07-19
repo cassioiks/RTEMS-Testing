@@ -1,0 +1,24 @@
+
+**** Build of configuration Debug for project Print ****
+
+make all 
+Building file: ../scr/main.c
+Invoking: Cross GCC Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"scr/main.d" -MT"scr/main.d" -o "scr/main.o" "../scr/main.c"
+../scr/main.c: In function ‘print’:
+../scr/main.c:14: warning: format ‘%i’ expects type ‘int’, but argument 2 has type ‘int *’
+../scr/main.c:15: warning: format ‘%i’ expects type ‘int’, but argument 2 has type ‘void *’
+../scr/main.c:13: warning: unused variable ‘test1’
+../scr/main.c: At top level:
+../scr/main.c:18: warning: return type of ‘main’ is not ‘int’
+../scr/main.c: In function ‘main’:
+../scr/main.c:19: warning: format ‘%i’ expects type ‘int’, but argument 2 has type ‘int *’
+Finished building: ../scr/main.c
+ 
+Building target: Print
+Invoking: Cross GCC Linker
+gcc  -o "Print"  ./scr/main.o   
+Finished building target: Print
+ 
+
+**** Build Finished ****

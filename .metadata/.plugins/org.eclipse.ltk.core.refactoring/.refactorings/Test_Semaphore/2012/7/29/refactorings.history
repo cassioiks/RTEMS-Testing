@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;Test_Semaphore/scr/messages&apos; to &apos;messages.c&apos;" description="Rename resource &apos;messages&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="scr/messages" name="messages.c" stamp="1342563165204" updateReferences="true"/>
+</session>

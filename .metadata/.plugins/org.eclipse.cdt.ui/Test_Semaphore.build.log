@@ -1,0 +1,35 @@
+
+**** Build of configuration Debug for project Test_Semaphore ****
+
+make all 
+Building file: ../scr/init.c
+Invoking: Cross GCC Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"scr/init.d" -MT"scr/init.d" -o "scr/init.o" "../scr/init.c"
+../scr/init.c:12:23: warning: rtems/bsp.h: No such file or directory
+../scr/init.c:13:19: warning: rtems.h: No such file or directory
+../scr/init.c:15: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘task_1’
+../scr/init.c:16: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘task_2’
+../scr/init.c:17: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘task_3’
+../scr/init.c:19: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘semaphoreId’
+../scr/init.c:21: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘Init’
+../scr/init.c: In function ‘createSemaphore’:
+../scr/init.c:111: error: ‘rtems_status_code’ undeclared (first use in this function)
+../scr/init.c:111: error: (Each undeclared identifier is reported only once
+../scr/init.c:111: error: for each function it appears in.)
+../scr/init.c:111: error: expected ‘;’ before ‘semaphoreReturn’
+../scr/init.c:113: error: ‘semaphoreReturn’ undeclared (first use in this function)
+../scr/init.c:113: warning: implicit declaration of function ‘rtems_semaphore_create’
+../scr/init.c:114: warning: implicit declaration of function ‘rtems_build_name’
+../scr/init.c:116: error: ‘RTEMS_PRIORITY’ undeclared (first use in this function)
+../scr/init.c:116: error: ‘RTEMS_BINARY_SEMAPHORE’ undeclared (first use in this function)
+../scr/init.c:116: error: ‘RTEMS_GLOBAL’ undeclared (first use in this function)
+../scr/init.c:117: error: ‘RTEMS_NO_PRIORITY’ undeclared (first use in this function)
+../scr/init.c:118: error: ‘semaphoreId’ undeclared (first use in this function)
+../scr/init.c: At top level:
+../scr/init.c:124: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘task_1’
+../scr/init.c:131: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘task_2’
+../scr/init.c:137: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘task_3’
+../scr/init.c:154:22: warning: confdefs.h: No such file or directory
+make: *** [scr/init.o] Error 1
+
+**** Build Finished ****

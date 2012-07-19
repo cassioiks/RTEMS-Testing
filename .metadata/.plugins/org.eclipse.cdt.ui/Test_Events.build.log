@@ -1,0 +1,19 @@
+
+**** Build of configuration Debug for project Test_Events ****
+
+make all 
+Building file: ../scr/init.c
+Invoking: Cross GCC Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"scr/init.d" -MT"scr/init.d" -o "scr/init.o" "../scr/init.c"
+../scr/init.c:12:17: warning: bsp.h: No such file or directory
+../scr/init.c:13:19: warning: rtems.h: No such file or directory
+../scr/init.c:15: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘waitingTask’
+../scr/init.c:17: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘user_application’
+../scr/init.c:18: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘task_1’
+../scr/init.c:20: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘Init’
+../scr/init.c:83: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘user_application’
+../scr/init.c:109: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘task_1’
+../scr/init.c:150:28: warning: rtems/confdefs.h: No such file or directory
+make: *** [scr/init.o] Error 1
+
+**** Build Finished ****

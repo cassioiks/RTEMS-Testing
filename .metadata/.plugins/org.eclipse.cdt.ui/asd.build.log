@@ -1,0 +1,16 @@
+
+**** Build of configuration Debug for project asd ****
+
+make all 
+Building file: ../init.c
+Invoking: Cross GCC Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"init.d" -MT"init.d" -o "init.o" "../init.c"
+../init.c:10:17: warning: bsp.h: No such file or directory
+../init.c:11:19: warning: rtems.h: No such file or directory
+../init.c:13: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘user_application’
+../init.c:15: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘init_task’
+../init.c:46: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘user_application’
+../init.c:71:22: warning: confdefs.h: No such file or directory
+make: *** [init.o] Error 1
+
+**** Build Finished ****

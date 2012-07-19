@@ -1,0 +1,38 @@
+################################################################################
+# Automatically-generated file. Do not edit!
+################################################################################
+
+# Add inputs and outputs from these tool invocations to the build variables 
+CPP_SRCS += \
+../scr/test.cpp 
+
+C_SRCS += \
+../scr/init.c 
+
+OBJS += \
+./scr/init.o \
+./scr/test.o 
+
+C_DEPS += \
+./scr/init.d 
+
+CPP_DEPS += \
+./scr/test.d 
+
+
+# Each subdirectory must supply rules for building sources it contributes
+scr/%.o: ../scr/%.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: RTEMS C Compiler'
+	/opt/rtems-4.11/bin/sparc-rtems4.11-gcc -B/opt/rtems-4.11/sparc-rtems4.11/sis/lib/ -specs bsp_specs -qrtems -mcpu=cypress -Os -g -Wall -c -fmessage-length=0 -pipe -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o "$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+scr/%.o: ../scr/%.cpp
+	@echo 'Building file: $<'
+	@echo 'Invoking: RTEMS C++ Compiler'
+	/opt/rtems-4.11/bin/sparc-rtems4.11-g++ -B/opt/rtems-4.11/sparc-rtems4.11/sis/lib/ -specs bsp_specs -qrtems -mcpu=cypress -Os -g -Wall -c -fmessage-length=0 -pipe -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o "$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+

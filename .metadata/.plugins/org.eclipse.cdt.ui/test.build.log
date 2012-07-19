@@ -1,0 +1,26 @@
+
+**** Build of configuration RTEMS Executable Configuration for project test ****
+
+make all 
+Building file: ../scr/init.c
+Invoking: RTEMS C Compiler
+/opt/rtems-4.11/bin/sparc-rtems4.11-gcc -B/opt/rtems-4.11/sparc-rtems4.11/sis/lib/ -specs bsp_specs -qrtems -mcpu=cypress -Os -g -Wall -c -fmessage-length=0 -pipe -MMD -MP -MF"scr/init.d" -MT"scr/init.d" -o "scr/init.o" "../scr/init.c"
+../scr/init.c: In function 'user_application':
+../scr/init.c:127:3: warning: passing argument 2 of 'rtems_partition_get_buffer' from incompatible pointer type [enabled by default]
+/opt/rtems-4.11/sparc-rtems4.11/sis/lib/include/rtems/rtems/part.h:149:19: note: expected 'void **' but argument is of type 'double **'
+../scr/init.c:131:4: warning: format '%d' expects argument of type 'int', but argument 2 has type 'double *' [-Wformat]
+../scr/init.c:131:4: warning: format '%d' expects argument of type 'int', but argument 2 has type 'double *' [-Wformat]
+../scr/init.c: In function 'task_1':
+../scr/init.c:156:3: warning: passing argument 2 of 'rtems_partition_get_buffer' from incompatible pointer type [enabled by default]
+/opt/rtems-4.11/sparc-rtems4.11/sis/lib/include/rtems/rtems/part.h:149:19: note: expected 'void **' but argument is of type 'double **'
+../scr/init.c:160:4: warning: format '%d' expects argument of type 'int', but argument 2 has type 'double *' [-Wformat]
+../scr/init.c:160:4: warning: format '%d' expects argument of type 'int', but argument 2 has type 'double *' [-Wformat]
+Finished building: ../scr/init.c
+ 
+Building target: test.exe
+Invoking: RTEMS C++ Linker
+/opt/rtems-4.11/bin/sparc-rtems4.11-g++ -B/opt/rtems-4.11/sparc-rtems4.11/sis/lib/ -specs bsp_specs -qrtems -mcpu=cypress -o "test.exe"  ./scr/init.o   
+Finished building target: test.exe
+ 
+
+**** Build Finished ****

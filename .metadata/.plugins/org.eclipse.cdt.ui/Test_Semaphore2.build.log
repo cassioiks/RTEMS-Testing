@@ -1,0 +1,21 @@
+
+**** Build of configuration RTEMS Executable Configuration for project Test_Semaphore2 ****
+
+make all 
+Building file: ../scr/init.c
+Invoking: RTEMS C Compiler
+/opt/rtems-4.11/bin/sparc-rtems4.11-gcc -B/opt/rtems-4.11/sparc-rtems4.11/sis/lib/ -specs bsp_specs -qrtems -mcpu=cypress -Os -g -Wall -c -fmessage-length=0 -pipe -MMD -MP -MF"scr/init.d" -MT"scr/init.d" -o "scr/init.o" "../scr/init.c"
+../scr/init.c: In function 'Init':
+../scr/init.c:103:2: warning: implicit declaration of function 'createSemaphore' [-Wimplicit-function-declaration]
+../scr/init.c: At top level:
+../scr/init.c:110:6: warning: conflicting types for 'createSemaphore' [enabled by default]
+../scr/init.c:103:2: note: previous implicit declaration of 'createSemaphore' was here
+Finished building: ../scr/init.c
+ 
+Building target: Test_Semaphore2.exe
+Invoking: RTEMS Linker
+/opt/rtems-4.11/bin/sparc-rtems4.11-gcc -B/opt/rtems-4.11/sparc-rtems4.11/sis/lib/ -specs bsp_specs -qrtems -mcpu=cypress -o "Test_Semaphore2.exe"  ./scr/init.o ./scr/messages.o   
+Finished building target: Test_Semaphore2.exe
+ 
+
+**** Build Finished ****
