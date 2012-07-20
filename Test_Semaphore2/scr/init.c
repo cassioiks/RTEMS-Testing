@@ -176,7 +176,7 @@ rtems_task task_2(rtems_task_argument argument){
 		break;
 		}
 
-		//rtems_task_wake_after(500);
+		rtems_task_wake_after(500);
 	}
 }
 
