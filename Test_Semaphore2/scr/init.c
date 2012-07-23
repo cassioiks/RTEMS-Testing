@@ -114,7 +114,7 @@ void createSemaphore(void){
 			rtems_build_name('S','M','P','R'),
 			1,
 			RTEMS_PRIORITY | RTEMS_BINARY_SEMAPHORE | RTEMS_GLOBAL,
-			RTEMS_NO_PRIORITY,
+			0,
 			&semaphoreId
 	);
 
@@ -131,7 +131,6 @@ void createSemaphore(void){
 rtems_task task_1(rtems_task_argument argument)
 {
 	while ( 1 )  {
-
 		rtems_task_set_priority( RTEMS_SELF,
 				1,
 				RTEMS_CURRENT_PRIORITY
@@ -146,18 +145,19 @@ rtems_task task_1(rtems_task_argument argument)
 		break;
 		}
 
-		printf("Task 1: Waking after 10 seconds...\n");
-		rtems_task_wake_after(10000);
+		printf("Task 1: Waking after 5 seconds...\n");
+		rtems_task_wake_after(5000);
 		printf("Task 1: Task is now awake, releasing semaphore...\n");
 		rtems_semaphore_release(semaphoreId);
+
+
 	}
 }
 
 rtems_task task_2(rtems_task_argument argument){
 	while(1){
-
 		rtems_task_set_priority( RTEMS_SELF,
-				3,
+				50,
 				RTEMS_CURRENT_PRIORITY
 		);
 
@@ -170,35 +170,47 @@ rtems_task task_2(rtems_task_argument argument){
 
 		switch(status){
 		case RTEMS_SUCCESSFUL: printf("Task 2: Semaphore obtained...\n");
-		exit(1);
+		//exit(1);
 		break;
 		default: printf("Semaphore not obtained...\n");
 		break;
 		}
 
-		rtems_task_wake_after(500);
+		rtems_task_wake_after(1000);
+		printf("Task 2: Releasing semaphore...\n");
+		rtems_semaphore_release(semaphoreId);
+
 	}
 }
 
 rtems_task task_3(rtems_task_argument argument){
-	rtems_task_set_priority( RTEMS_SELF,
-			2,
-			RTEMS_CURRENT_PRIORITY
-	);
 
-	printf("Task 3: trying to obtain the semaphore...\n ");
-	rtems_status_code status = rtems_semaphore_obtain(
-			semaphoreId,
-			RTEMS_WAIT,
-			0
-	);
+	while(1){
+		rtems_task_set_priority( RTEMS_SELF,
+				2,
+				RTEMS_CURRENT_PRIORITY
+		);
 
-	switch(status){
-	case RTEMS_SUCCESSFUL: printf("Task 3: Semaphore obtained...\n");
-	exit(1);
-	break;
-	default: printf("Semaphore not obtained...\n");
-	break;
+		printf("Task 3: trying to obtain the semaphore...\n ");
+		rtems_status_code status = rtems_semaphore_obtain(
+				semaphoreId,
+				RTEMS_WAIT,
+				0
+		);
+
+		switch(status){
+		case RTEMS_SUCCESSFUL: printf("Task 3: Semaphore obtained...\n");
+		//exit(1);
+		break;
+		default: printf("Semaphore not obtained...\n");
+		break;
+		}
+
+		rtems_task_wake_after(1000);
+		printf("Task 3: Releasing semaphore...\n");
+		rtems_semaphore_release(semaphoreId);
+
+
 	}
 	//rtems_task_delete( RTEMS_SELF );
 }
