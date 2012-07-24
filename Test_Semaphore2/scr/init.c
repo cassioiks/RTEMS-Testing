@@ -131,12 +131,20 @@ void createSemaphore(void){
 rtems_task task_1(rtems_task_argument argument)
 {
 	while ( 1 )  {
-		rtems_task_set_priority( RTEMS_SELF,
+		rtems_status_code status;
+		rtems_task_priority task_priority = RTEMS_CURRENT_PRIORITY;
+
+		status = rtems_task_set_priority( RTEMS_SELF,
 				1,
-				RTEMS_CURRENT_PRIORITY
+				&task_priority
 		);
 
-		rtems_status_code status = rtems_semaphore_obtain(semaphoreId, RTEMS_WAIT, 0);
+		if(status == RTEMS_SUCCESSFUL)
+			printf("Task 1: Priority set sucessfully...\n");
+		else
+			printf("Task 1: Priority not set...\n");
+
+		status = rtems_semaphore_obtain(semaphoreId, RTEMS_WAIT, 0);
 
 		switch(status){
 		case RTEMS_SUCCESSFUL: printf("Task 1: Semaphore obtained...\n");
@@ -156,13 +164,21 @@ rtems_task task_1(rtems_task_argument argument)
 
 rtems_task task_2(rtems_task_argument argument){
 	while(1){
-		rtems_task_set_priority( RTEMS_SELF,
-				50,
-				RTEMS_CURRENT_PRIORITY
+		rtems_status_code status;
+		rtems_task_priority task_priority = RTEMS_CURRENT_PRIORITY;
+
+		status = rtems_task_set_priority( RTEMS_SELF,
+				3,
+				&task_priority
 		);
+		if(status == RTEMS_SUCCESSFUL)
+			printf("Task 2: Priority set sucessfully...\n");
+		else
+			printf("Task 2: Priority not set...\n");
 
 		printf("Task 2: trying to obtain the semaphore...\n ");
-		rtems_status_code status = rtems_semaphore_obtain(
+
+		status = rtems_semaphore_obtain(
 				semaphoreId,
 				RTEMS_WAIT,
 				0
@@ -186,13 +202,22 @@ rtems_task task_2(rtems_task_argument argument){
 rtems_task task_3(rtems_task_argument argument){
 
 	while(1){
-		rtems_task_set_priority( RTEMS_SELF,
+		rtems_status_code status;
+
+		rtems_task_priority task_priority = RTEMS_CURRENT_PRIORITY;
+
+		status = rtems_task_set_priority( RTEMS_SELF,
 				2,
-				RTEMS_CURRENT_PRIORITY
+				&task_priority
 		);
+		if(status == RTEMS_SUCCESSFUL)
+			printf("Task 3: Priority set sucessfully...\n");
+		else
+			printf("Task 3: Priority not set...\n");
 
 		printf("Task 3: trying to obtain the semaphore...\n ");
-		rtems_status_code status = rtems_semaphore_obtain(
+
+		status = rtems_semaphore_obtain(
 				semaphoreId,
 				RTEMS_WAIT,
 				0
